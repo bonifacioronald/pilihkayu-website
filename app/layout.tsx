@@ -1,13 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { body, display } from "./fonts";
 import { settings } from "@/lib/settings";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(settings.siteUrl),
@@ -35,8 +29,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="bg-paper font-sans text-ink antialiased">{children}</body>
+    <html lang="en" className={`${body.variable} ${display.variable}`}>
+      <body className="sheet font-sans text-ink antialiased">{children}</body>
     </html>
   );
 }

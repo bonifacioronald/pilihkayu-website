@@ -10,6 +10,7 @@
   --color-terracotta: #c1592c; /* Small highlights only. Never body text. */
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-serif, Georgia, serif;
 
   /* One easing curve, three durations (Motion & craft rules) */
   --ease-brand: cubic-bezier(0.23, 1, 0.32, 1);
@@ -37,6 +38,21 @@ h1,
 h2,
 h3 {
   text-wrap: balance;
+}
+
+/* Display face at its softest, closest to Recoleta (no effect once Recoleta is in). */
+.font-display {
+  font-variation-settings: "SOFT" 100;
+}
+
+/* Drawing-sheet background: paper with a faint drafting grid in Accent Metal. */
+.sheet {
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(to right, rgb(184 134 59 / 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(184 134 59 / 0.09) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center top;
 }
 
 p {
