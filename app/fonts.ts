@@ -1,11 +1,6 @@
 import { Fraunces, Inter } from "next/font/google";
 
-/**
- * Display face. The brand font is Recoleta (licensed). Until the web licence files are in
- * assets/brand/fonts, Fraunces (the spec's free alternative) stands in, set to its softest
- * style to sit close to Recoleta. To switch: replace this with next/font/local pointing at
- * the Recoleta .woff2 files, keeping the variable name --font-display.
- */
+/** Display face: Fraunces in its softest style (brand decision, 12 Nov 2026). */
 export const display = Fraunces({
   variable: "--font-display",
   subsets: ["latin"],

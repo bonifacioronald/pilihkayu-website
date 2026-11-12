@@ -126,7 +126,7 @@ The look is an architect's drawing set brought to life: warm paper background, d
 
 Gold and terracotta are too light for body text on the background (about 2.8:1 and 3.8:1), so they're used for lines and large accents only.
 
-**Typography**: Recoleta in letter-spaced capitals for section titles and short labels, regular Recoleta for headings; Inter for body, captions, forms and buttons. Decide before Phase 1: buy the Recoleta web licence or use the free Fraunces.
+**Typography**: Fraunces (soft style) in letter-spaced capitals for section titles and short labels, regular Fraunces for headings; Inter for body, captions, forms and buttons. Decided 12 Nov 2026: Fraunces instead of Recoleta.
 
 **Brand details**: the logo mark in Anchor Dark (top left, favicon); the two wood-texture swatches as thin bands or small panels, never behind long text.
 
@@ -251,7 +251,7 @@ Assets are handed to Claude Code phase by phase. Each phase prompt asks Claude t
 | --- | --- | --- | --- |
 | Logo: wordmark + mark, dark and light | Every page, favicon | SVG (or high-res PNG) |  |
 | Brand & design guide | Design system | PNG/PDF | Yes |
-| Recoleta web licence (or Fraunces) | Headings | Font files |  |
+| Fraunces (free, Google Fonts) | Headings | Loaded by the site | Yes |
 | Final catalogue PDF | /catalogue | PDF, under 10 MB | Later |
 | Raw factory clips: rip saw, moulding, finger joint, laminate, sanding, sun drying, UV coating, assembly, hand finishing, storage, forklift, packing, loading | Credibility strip, /factory, /welcome | MP4, portrait OK, no text or music, 1080p+ | Yes |
 | 3 edited process reels | /factory | MP4 | Yes |
@@ -321,7 +321,7 @@ Six steps. Steps 1–3 happen once, step 4 repeats per phase, steps 5–6 happen
 - [x] Login for the registrar where pilihkayu.id was bought
 - [x] Google account (pilihkayu.id@gmail.com for now) for the Leads Sheet and Analytics
 - [x] Claude Code and Node.js installed on your computer
-- [x] Font decision: Recoleta web licence or Fraunces
+- [x] Font decision: Fraunces
 
 ### Step 2: Project folder
 

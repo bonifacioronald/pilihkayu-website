@@ -21,7 +21,8 @@
 - #F4EDE3 background, #2B1A12 text, #5A3A28 secondary, #6E2A2A buttons,
   #B8863B fine lines, #C1592C small highlights. Ratio 70 / 20 / 10.
 - Gold and terracotta never for body text.
-- Recoleta (letter-spaced capitals for section titles, regular for headings); Inter for body.
+- Fraunces, soft style (letter-spaced capitals for section titles, regular for headings); Inter for body.
+  Fraunces replaces Recoleta (decided 12 Nov 2026).
 - Architectural look: grid, thin rules, numbered sections, line drawings.
 - Follow the craft rules in docs/spec.md.
 
