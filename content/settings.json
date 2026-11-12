@@ -1,0 +1,21 @@
+{
+  "siteName": "PilihKayu",
+  "siteUrl": "https://pilihkayu.id",
+  "whatsapp": {
+    "number": "6285212894718",
+    "display": "+62 852 1289 4718",
+    "defaultMessage": "Halo PilihKayu, saya ingin konsultasi proyek (dari website)"
+  },
+  "email": "pilihkayu.id@gmail.com",
+  "instagram": {
+    "handle": "pilihkayu.id",
+    "url": "https://www.instagram.com/pilihkayu.id/"
+  },
+  "catalogue": {
+    "file": null,
+    "available": false
+  },
+  "comingSoon": {
+    "site": true
+  }
+}
