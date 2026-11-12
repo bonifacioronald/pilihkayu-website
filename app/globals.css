@@ -40,7 +40,7 @@ h3 {
   text-wrap: balance;
 }
 
-/* Display face at its softest, closest to Recoleta (no effect once Recoleta is in). */
+/* Fraunces at its softest: the brand display style. */
 .font-display {
   font-variation-settings: "SOFT" 100;
 }
