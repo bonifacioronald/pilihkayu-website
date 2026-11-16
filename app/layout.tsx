@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "@/components/analytics";
 import { settings } from "@/lib/settings";
 import { body, display } from "./fonts";
 import "./globals.css";
@@ -39,6 +40,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         <div className="site">{children}</div>
+        <Analytics />
       </body>
     </html>
   );

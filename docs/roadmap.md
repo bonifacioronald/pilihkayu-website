@@ -9,7 +9,8 @@ built on its own branch with a preview, merged only after your phone QA.
 | Phase | What | Status |
 | --- | --- | --- |
 | 0 | Setup, content files, domain | Done (live) |
-| 1 | Design system + /styleguide | Built, waiting for merge |
+| 1 | Design system + /styleguide | Done (merged 16 Nov) |
+| 2 | /welcome + analytics | Built on phase-2-welcome; waits for launch with Phase 3 |
 
 ## v1 launch: "the site is real"
 

@@ -143,6 +143,9 @@ All in `components/ui/` unless noted. Shown on /styleguide.
 | PopupBanner | `popup-banner.tsx` | After 20 s or half a page, once; closed = hidden 7 days; never on /catalogue or /welcome. |
 | ClosingCta | `closing-cta.tsx` | Deep-red block from catalogue p.14 with WhatsApp button and contact list. |
 | Icons | `icons.tsx` | One set: 24 px grid, 1.5 stroke, square caps. |
+| FactoryLoop | `factory-loop.tsx` | Short muted loop of real footage. Poster image paints first; the video starts only after the page has loaded and while on screen; always has a Pause/Play button; never autoplays with reduced motion. Encode loops as H.264 MP4, 720 px, no audio, under 10 s, under ~600 KB, with a poster JPG. |
+| CertificationMarks | `certification-marks.tsx` | SVLK, FSC, JAS single-colour marks (`public/certifications/`, paper or espresso) with codes. |
+| WelcomeLinks | `components/welcome-links.tsx` | /welcome buttons from `content/welcome-links.json`: first WhatsApp link is the primary button, the rest are ruled rows; "soon" rows are disabled and labelled. WhatsApp message notes the source (Instagram or catalogue QR) from `utm_source`. |
 | Placeholder | `placeholder.tsx` | "Asset pending · ratio". Flat ground, fine hatching, plain label. Never imitates content. |
 | ProjectsGrid, ProjectCard | `components/projects/` | See §9. |
 | CaseStudyHeader, CaseStudySectionBlock, CaseStudyIndex | `components/projects/` | See §9. |
@@ -188,7 +191,16 @@ Replaces the Projects section of `docs/spec.md`. Data: `content/projects.json`; 
 
 **Case study 2** (`/projects/furniture-heritage`): one page with the slideshow walking timber → workshop → finished pieces. Selected pieces appear as grid items that open the page at their slide. No page per piece.
 
-## 10. Craft checks (each phase, with docs/spec.md's list)
+## 10. Analytics
+
+`components/analytics.tsx` (mounted once in the root layout): Google Analytics 4 on the production site only (`NEXT_PUBLIC_GA_ID` in Vercel), plus Vercel Speed Insights. One click listener sends:
+
+- `whatsapp_click` for any `wa.me` link, with `page` and `product` (from `data-product`, default "general");
+- any element with `data-track="event_name"`, with its `data-track-*` attributes as parameters (e.g. `welcome_button_click` with `button`).
+
+New buttons only need the data attributes; no extra code.
+
+## 11. Craft checks (each phase, with docs/spec.md's list)
 
 - Tokens only; radius 0; one primary button per screen.
 - Titles caps, light, off-axis; body in the offset column.

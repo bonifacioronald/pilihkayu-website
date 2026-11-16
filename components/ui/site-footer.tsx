@@ -1,15 +1,10 @@
 import { settings, whatsappUrl } from "@/lib/settings";
 import { GoldRule } from "./section";
 import { Instagram, Mail, Phone } from "./icons";
+import { CertificationMarks } from "./certification-marks";
 import { Logo } from "./logo";
 
-const certifications = [
-  { name: "SVLK", code: "SVLK 00055" },
-  { name: "FSC®", code: "FSC® COC-005695" },
-  { name: "JAS", code: "JAS" },
-];
-
-/** Footer: contact, certifications (logos pending), legal note from the catalogue. */
+/** Footer: contact, certification marks, legal note from the catalogue. */
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
@@ -46,13 +41,7 @@ export function SiteFooter() {
 
         <div className="col-span-4 md:col-span-4 lg:col-span-3">
           <p className="t-label mb-5">Certified</p>
-          <ul className="space-y-3 text-base">
-            {certifications.map((c) => (
-              <li key={c.name} className="tabular t-muted">
-                {c.code}
-              </li>
-            ))}
-          </ul>
+          <CertificationMarks />
         </div>
 
         <div className="col-span-4 md:col-span-8 lg:col-span-12">

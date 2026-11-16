@@ -1,1 +1,16 @@
-{ "links": [] }
+{
+  "$comment": "Buttons on /welcome, in order. status: \"live\" or \"soon\" (shown disabled, labelled Coming soon). Flip a button to live when its page ships. kind \"whatsapp\" opens WhatsApp with message; kind \"page\" links to href.",
+  "links": [
+    {
+      "id": "contact",
+      "kind": "whatsapp",
+      "label": "Contact us",
+      "helper": "Chat lewat WhatsApp",
+      "message": "Halo PilihKayu, saya ingin konsultasi proyek",
+      "status": "live"
+    },
+    { "id": "website", "kind": "page", "label": "Visit our website", "href": "/", "status": "soon" },
+    { "id": "factory", "kind": "page", "label": "Our factory", "href": "/factory", "status": "soon" },
+    { "id": "catalogue", "kind": "page", "label": "Download catalogue", "href": "/catalogue", "status": "soon" }
+  ]
+}

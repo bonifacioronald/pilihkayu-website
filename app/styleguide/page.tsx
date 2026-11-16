@@ -460,12 +460,15 @@ export default function StyleguidePage() {
                   {[
                     { n: "1995", t: "Since 1995, from a single sawmill" },
                     { n: "11,000 m²", t: "Facility in Indonesia" },
-                    { n: "250+", t: "Skilled craftspeople" },
+                    { n: "250", plus: true, t: "Skilled craftspeople" },
                     { n: "SVLK · FSC® · JAS", t: "Legality, sourcing and grading" },
                   ].map((s) => (
                     <li key={s.n} className="flex min-h-36 flex-col justify-between gap-6 border-r border-b border-gold/40 p-4 lg:min-h-44 lg:p-5">
                       <p className="t-meta">{s.t}</p>
-                      <p className="t-content !text-[1.625rem] normal-case lg:!text-[2rem]">{s.n}</p>
+                      <p className="t-content !text-[1.625rem] normal-case lg:!text-[2rem]">
+                        {s.n}
+                        {"plus" in s && s.plus ? <span className="font-sans font-light">+</span> : null}
+                      </p>
                     </li>
                   ))}
                 </ul>

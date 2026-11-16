@@ -20,14 +20,14 @@ We collect in stages: each phase asks only for what that phase needs. Status 16 
 
 ## 1. Brand (folder `assets/brand/`)
 
-- [ ] **P1 Logo as SVG**, light and dark versions (mark + wordmark). I have a light PNG; SVG stays sharp on every screen.
-- [ ] **P1 Certification logos**: SVLK, FSC, JAS as SVG or high-res PNG. FSC logos must be the licensee artwork from your FSC certificate holder portal (FSC has strict usage rules).
-- [ ] **P2 Wood texture photos**, the two from the brand guide (dark and light), at least 2,400 px. Used as a faint section background.
+- [x] **P1 Logo as SVG** (received; the PNG-based files are used on the site because they render cleaner), light and dark versions (mark + wordmark). I have a light PNG; SVG stays sharp on every screen.
+- [x] **P1 Certification logos** (received; single-colour versions in public/certifications/): SVLK, FSC, JAS as SVG or high-res PNG. FSC logos must be the licensee artwork from your FSC certificate holder portal (FSC has strict usage rules).
+- [x] **P2 Wood texture photos** (received: wood-texture-1 to 3), the two from the brand guide (dark and light), at least 2,400 px. Used as a faint section background.
 - [ ] **P2 Catalogue line art originals** (SVG/PDF/AI):
-  - [ ] Tree-ring illustration (catalogue p.2)
-  - [ ] Building perspective drawing (p.9)
-  - [ ] Uni Joint and FJL 2P construction diagrams (p.6)
-- [ ] **P2 Catalogue photos at full resolution**, the originals behind the catalogue pages:
+  - [x] Tree-ring illustration (catalogue p.2): received, but it is a picture inside an SVG, so it can't draw in; the vector version on /styleguide is used instead
+  - [x] Building perspective drawing (p.9): received, real vector
+  - [x] Uni Joint and FJL 2P construction diagrams (p.6): received, real vector
+- [x] **P2 Catalogue photos at full resolution** (received), the originals behind the catalogue pages:
   - [ ] Cover floor photo (p.1)
   - [ ] Timber stack background (p.4)
   - [ ] Stacked floor boards (p.5)
