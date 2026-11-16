@@ -1,1 +1,52 @@
-{ "projects": [] }
+{
+  "$comment": "Grid items point at a case study and a section (or slide) id. Only case studies get pages. Use null for facts not yet confirmed; never invent them. See docs/design-system.md, Projects.",
+  "caseStudies": [
+    {
+      "slug": "residential-semarang-yh-2026",
+      "kind": "sections",
+      "title": "Residential, Semarang",
+      "client": "Mr. YH",
+      "projectType": "Residential",
+      "location": "Semarang",
+      "year": 2026,
+      "status": "Installation in progress",
+      "scope": ["Ceilings", "Staircases", "Doors & Frames", "Flooring", "Skirting"],
+      "species": [],
+      "sections": [
+        { "id": "interior-ceiling", "title": "Interior ceiling", "product": "Ceilings", "species": null, "construction": null, "finish": null, "dimensions": null, "description": null, "images": [] },
+        { "id": "exterior-ceiling", "title": "Exterior ceiling", "product": "Ceilings", "species": null, "construction": null, "finish": null, "dimensions": null, "description": null, "images": [] },
+        { "id": "staircase-1", "title": "Staircase 1", "product": "Staircases", "species": null, "construction": null, "finish": null, "dimensions": null, "description": null, "images": [] },
+        { "id": "staircase-2", "title": "Staircase 2", "product": "Staircases", "species": null, "construction": null, "finish": null, "dimensions": null, "description": null, "images": [] },
+        { "id": "main-door", "title": "Main door", "product": "Doors & Frames", "species": null, "construction": null, "finish": null, "dimensions": null, "description": null, "images": [] },
+        { "id": "interior-doors", "title": "Interior doors", "product": "Doors & Frames", "species": null, "construction": null, "finish": null, "dimensions": null, "description": null, "images": [] },
+        { "id": "office-flooring", "title": "Office flooring", "product": "Flooring", "species": null, "construction": null, "finish": null, "dimensions": null, "description": null, "images": [] },
+        { "id": "bathroom-flooring", "title": "Bathroom flooring", "product": "Flooring", "species": null, "construction": null, "finish": null, "dimensions": null, "description": null, "images": [] },
+        { "id": "skirting", "title": "Skirting", "product": "Skirting", "species": null, "construction": null, "finish": null, "dimensions": null, "description": null, "images": [] }
+      ]
+    },
+    {
+      "slug": "furniture-heritage",
+      "kind": "slideshow",
+      "title": "Furniture heritage",
+      "client": null,
+      "projectType": "Furniture",
+      "location": null,
+      "year": null,
+      "status": null,
+      "scope": ["Furniture"],
+      "species": [],
+      "slides": []
+    }
+  ],
+  "items": [
+    { "id": "semarang-interior-ceiling", "title": "Interior ceiling", "product": "Ceilings", "projectType": "Residential", "location": "Semarang", "year": 2026, "species": null, "finish": null, "description": null, "image": null, "caseStudy": "residential-semarang-yh-2026", "target": "interior-ceiling" },
+    { "id": "semarang-exterior-ceiling", "title": "Exterior ceiling", "product": "Ceilings", "projectType": "Residential", "location": "Semarang", "year": 2026, "species": null, "finish": null, "description": null, "image": null, "caseStudy": "residential-semarang-yh-2026", "target": "exterior-ceiling" },
+    { "id": "semarang-staircase-1", "title": "Staircase 1", "product": "Staircases", "projectType": "Residential", "location": "Semarang", "year": 2026, "species": null, "finish": null, "description": null, "image": null, "caseStudy": "residential-semarang-yh-2026", "target": "staircase-1" },
+    { "id": "semarang-staircase-2", "title": "Staircase 2", "product": "Staircases", "projectType": "Residential", "location": "Semarang", "year": 2026, "species": null, "finish": null, "description": null, "image": null, "caseStudy": "residential-semarang-yh-2026", "target": "staircase-2" },
+    { "id": "semarang-main-door", "title": "Main door", "product": "Doors & Frames", "projectType": "Residential", "location": "Semarang", "year": 2026, "species": null, "finish": null, "description": null, "image": null, "caseStudy": "residential-semarang-yh-2026", "target": "main-door" },
+    { "id": "semarang-interior-doors", "title": "Interior doors", "product": "Doors & Frames", "projectType": "Residential", "location": "Semarang", "year": 2026, "species": null, "finish": null, "description": null, "image": null, "caseStudy": "residential-semarang-yh-2026", "target": "interior-doors" },
+    { "id": "semarang-office-flooring", "title": "Office flooring", "product": "Flooring", "projectType": "Residential", "location": "Semarang", "year": 2026, "species": null, "finish": null, "description": null, "image": null, "caseStudy": "residential-semarang-yh-2026", "target": "office-flooring" },
+    { "id": "semarang-bathroom-flooring", "title": "Bathroom flooring", "product": "Flooring", "projectType": "Residential", "location": "Semarang", "year": 2026, "species": null, "finish": null, "description": null, "image": null, "caseStudy": "residential-semarang-yh-2026", "target": "bathroom-flooring" },
+    { "id": "semarang-skirting", "title": "Skirting", "product": "Skirting", "projectType": "Residential", "location": "Semarang", "year": 2026, "species": null, "finish": null, "description": null, "image": null, "caseStudy": "residential-semarang-yh-2026", "target": "skirting" }
+  ]
+}

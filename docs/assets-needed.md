@@ -14,6 +14,8 @@ Upload files to the matching `assets/` folder on GitHub (Add file → Upload fil
 
 Priority: **P1** = needed for launch · **P2** = makes it much better · **P3** = later.
 
+We collect in stages: each phase asks only for what that phase needs. Status 16 Nov: brand files coming from you; reels and clips ready (see section 2); products, projects and most copy come later.
+
 ---
 
 ## 1. Brand (folder `assets/brand/`)
@@ -36,8 +38,16 @@ Priority: **P1** = needed for launch · **P2** = makes it much better · **P3** 
 
 Used on Home (credibility strip), /factory and /welcome.
 
-- [x] Raw factory clips (you have these: rip saw, moulding, finger joint, laminate, sanding, sun drying, UV coating, assembly, hand finishing, storage, forklift, packing, loading)
-- [x] 3 edited process reels
+- [x] 3 edited process reels (you have these). Send all three; trim any file over 25 MB.
+- [x] Raw factory clips (you have these). **Send only these 6**, one per stage, each 6–10 seconds of the steadiest footage, no talking, landscape:
+  1. Rip saw (raw timber)
+  2. Moulding
+  3. Finger joint or laminate
+  4. Sanding or hand finishing
+  5. UV coating
+  6. Storage with forklift, or loading (scale)
+
+  The site plays at most one clip per screen, muted and looping, and only on Home (credibility strip), /factory and /welcome. More clips would slow the pages down without showing anything new. If any of the 6 also exists as a steady **portrait** shot, send that too for phones.
 - [ ] **P1 Factory stills** (landscape unless noted):
   - [ ] Facility wide shot (the whole hall)
   - [ ] Timber stock / storage
@@ -107,7 +117,7 @@ Used on Home (credibility strip), /factory and /welcome.
 
 ## 5. Copy and information
 
-- [ ] **P1 /welcome buttons**: the list and order of buttons, and which are "Coming soon"
+- [x] **P1 /welcome buttons** (16 Nov): Contact us (WhatsApp) is live; Download catalogue is "Coming soon"; more buttons (Projects, etc.) are added as their pages ship
 - [ ] **P1 How we work**: payment terms, delivery areas, what clients should prepare, and the questions you retype most often with your answers (FAQ)
 - [ ] **P1 For architects**: how samples work (free? delivered?), which drawing formats you accept (DWG, PDF…), how factory visits are arranged
 - [ ] **P1 For contractors**: lead times, repeat-order terms, project pricing you are happy to state publicly

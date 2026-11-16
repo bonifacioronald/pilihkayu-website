@@ -78,6 +78,8 @@ Also: a 404 page pointing to /welcome and WhatsApp, and a footer with WhatsApp, 
 
 ## Projects
 
+> **Replaced in Phase 1 (16 Nov 2026):** see docs/design-system.md §9 for the data model (case studies + grid items) and page designs. The text below is kept for history.
+
 All work lives on one page, /projects, so the volume of work is visible at a glance instead of spread thin across pages.
 
 **The grid**
@@ -110,6 +112,8 @@ All work lives on one page, /projects, so the volume of work is visible at a gla
 - Clients by initials only; no addresses.
 
 ## Visual direction
+
+> **Replaced in Phase 1 (16 Nov 2026):** the site is dark by default (espresso ground), with light Fraunces capitals and an off-axis architectural layout. docs/design-system.md is the source of truth for colour, type, layout, images and motion. The text below is kept for history; where it disagrees, design-system.md wins.
 
 The look is an architect's drawing set brought to life: warm paper background, dark ink, thin lines, dimension marks, then polished renders for aspiration and real factory footage for proof.
 
@@ -224,6 +228,8 @@ Every page does one of four things: prove credibility, educate, capture a lead, 
 **Speed & reliability targets**: mobile Lighthouse 90+; largest image visible in under 2.5 seconds on 4G; images in AVIF/WebP; videos short, muted, compressed, with a poster; zero broken links.
 
 ## Copy & content rules
+
+> **Updated in Phase 1:** English only in body copy; Indonesian only as short helper labels of a few words on CTAs and form fields, never full sentences (docs/design-system.md §8). The facts list below still applies.
 
 Copy is English first, with short Indonesian helper text wherever a visitor has to understand or do something.
 

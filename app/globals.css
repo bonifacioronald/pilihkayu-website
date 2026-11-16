@@ -1,32 +1,133 @@
 @import "tailwindcss";
 
-/* Brand tokens (docs/spec.md, Visual direction). Use these only: no one-off colours. */
+/*
+ * PilihKayu design tokens. Source of truth: docs/design-system.md.
+ * Use these only: no one-off colours, sizes or radii. Border-radius is 0 everywhere.
+ */
 @theme {
-  --color-paper: #f4ede3; /* Background, ~70% */
-  --color-ink: #2b1a12; /* Anchor dark: headlines, body, logo */
-  --color-ink-soft: #5a3a28; /* Secondary text, captions */
-  --color-oxblood: #6e2a2a; /* Primary buttons, section tags */
-  --color-brass: #b8863b; /* Fine lines, certification marks. Never text. */
-  --color-terracotta: #c1592c; /* Small highlights only. Never body text. */
+  --color-*: initial;
+  --color-espresso: #2b1a12; /* default page ground */
+  --color-paper: #f4ede3; /* text on dark; alternate section ground */
+  --color-stone: #b0a08f; /* secondary text on dark (6.57:1 on espresso) */
+  --color-gold: #b8863b; /* labels, taglines, rules on dark (5.17:1). Lines only on paper */
+  --color-oxblood: #6e2a2a; /* closing call-to-action block only */
+  --color-terracotta: #c1592c; /* text-free blocks: section-tag bar */
+  --color-terracotta-deep: #a3461f; /* blocks holding small text: Visualisation caption (5.23:1) */
+  --color-neutral: #5a3a28; /* secondary text on paper (8.73:1) */
+  --color-transparent: transparent;
+  --color-current: currentColor;
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-display), ui-serif, Georgia, serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
 
-  /* One easing curve, three durations (Motion & craft rules) */
+  --radius-*: initial;
+
   --ease-brand: cubic-bezier(0.23, 1, 0.32, 1);
   --duration-ui: 160ms;
   --duration-overlay: 300ms;
   --duration-reveal: 600ms;
+  --duration-draw: 1200ms;
+
+  --breakpoint-md: 40rem; /* 640: tablet, 8 columns */
+  --breakpoint-lg: 64rem; /* 1024: desktop, 12 columns */
+}
+
+/* Page margins and the 1440 content cap. --outer is the distance from the viewport edge to the
+   content; edge-bleed images extend by exactly this much. */
+:root {
+  --outer: max(var(--margin), calc((100vw - 1440px) / 2));
+  --margin: 20px;
+  --gutter: 16px;
+  --section-y: 96px;
+  --header-h: 64px;
+}
+@media (min-width: 40rem) {
+  :root {
+    --margin: 40px;
+    --gutter: 20px;
+  }
+}
+@media (min-width: 64rem) {
+  :root {
+    --margin: clamp(48px, 6vw, 112px);
+    --gutter: 24px;
+    --section-y: 160px;
+    --header-h: 80px;
+  }
+}
+
+.site {
+  /* Clips the few pixels an edge-bleed image can overshoot when a desktop scrollbar is present. */
+  overflow-x: clip;
+}
+
+/* Section tones. Components read these variables, so they adapt to the ground they sit on. */
+.tone-espresso,
+.tone-image {
+  --bg: var(--color-espresso);
+  --fg: var(--color-paper);
+  --muted: var(--color-stone);
+  --label: var(--color-gold);
+  --rule: var(--color-gold);
+  --line: var(--color-gold);
+  --btn-bg: var(--color-paper);
+  --btn-fg: var(--color-espresso);
+  --btn-hover: var(--color-gold);
+  --outline: var(--color-gold);
+  --field: rgb(244 237 227 / 0.06);
+  --placeholder-bg: #3a261c;
+  --error: #e9a07a;
+}
+.tone-paper {
+  --bg: var(--color-paper);
+  --fg: var(--color-espresso);
+  --muted: var(--color-neutral);
+  --label: var(--color-neutral);
+  --rule: var(--color-gold);
+  --line: var(--color-neutral);
+  --btn-bg: var(--color-espresso);
+  --btn-fg: var(--color-paper);
+  --btn-hover: var(--color-neutral);
+  --outline: var(--color-neutral);
+  --field: rgb(43 26 18 / 0.04);
+  --placeholder-bg: #e6dccd;
+  --error: #8a2f1c;
+}
+.tone-oxblood {
+  --bg: var(--color-oxblood);
+  --fg: var(--color-paper);
+  --muted: #e2cfc2;
+  --label: var(--color-paper);
+  --rule: var(--color-gold);
+  --line: var(--color-gold);
+  --btn-bg: var(--color-paper);
+  --btn-fg: var(--color-espresso);
+  --btn-hover: var(--color-gold);
+  --outline: var(--color-paper);
+  --field: rgb(244 237 227 / 0.08);
+  --placeholder-bg: #5e2222;
+  --error: #f3c0a6;
+}
+@layer components {
+  .tone-espresso,
+  .tone-paper,
+  .tone-oxblood,
+  .tone-image {
+    background-color: var(--bg);
+    color: var(--fg);
+  }
 }
 
 html {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
+  background-color: var(--color-espresso);
+  color: var(--color-paper);
   -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 16px);
 }
 
 body {
   -webkit-tap-highlight-color: transparent;
+  font-feature-settings: "cv11", "ss01";
 }
 
 a,
@@ -34,48 +135,241 @@ button {
   touch-action: manipulation;
 }
 
-h1,
-h2,
-h3 {
-  text-wrap: balance;
-}
-
-/* Fraunces at its softest: the brand display style. */
-.font-display {
-  font-variation-settings: "SOFT" 100;
-}
-
-/* Drawing-sheet background: paper with a faint drafting grid in Accent Metal. */
-.sheet {
-  background-color: var(--color-paper);
-  background-image:
-    linear-gradient(to right, rgb(184 134 59 / 0.09) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(184 134 59 / 0.09) 1px, transparent 1px);
-  background-size: 48px 48px;
-  background-position: center top;
-}
-
-p {
-  text-wrap: pretty;
-}
-
 ::selection {
-  background-color: var(--color-oxblood);
-  color: var(--color-paper);
+  background-color: var(--color-gold);
+  color: var(--color-espresso);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-oxblood);
+  outline: 2px solid var(--color-gold);
   outline-offset: 3px;
 }
+.tone-paper :focus-visible {
+  outline-color: var(--color-neutral);
+}
 
-/* Reduce motion: movement (transform) is opted in per element with Tailwind's motion-safe:.
-   Keyframe animations end in their final state; colour and opacity feedback stays. */
+/* ---------- Type scale ---------- */
+@layer components {
+  .t-display,
+  .t-title,
+  .t-content,
+  .t-break,
+  .t-tagline {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-variation-settings: "opsz" 144, "SOFT" 0, "WONK" 0;
+    font-style: normal;
+  }
+  .t-display,
+  .t-title,
+  .t-content {
+    text-transform: uppercase;
+    text-wrap: balance;
+    letter-spacing: -0.005em;
+  }
+  /* Display: home hero and case-study titles. Brand "Title 48", enlarged for the web. */
+  .t-display {
+    font-size: clamp(2.75rem, 1.4rem + 6.2vw, 7rem);
+    line-height: 1;
+  }
+  /* Title: section titles. */
+  .t-title {
+    font-size: clamp(2.25rem, 1.55rem + 3.2vw, 4rem);
+    line-height: 1.02;
+  }
+  /* Content title: product and sub-section titles. Brand "H1 32". */
+  .t-content {
+    font-size: clamp(1.625rem, 1.35rem + 1.2vw, 2.25rem);
+    line-height: 1.05;
+  }
+  /* Section break: wide-tracked capitals. Brand "R E C O L E T A 48PX" style, sized down. */
+  .t-break {
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: clamp(0.25em, 0.15em + 0.5vw, 0.4em);
+    text-wrap: balance;
+  }
+  /* Tagline: lowercase, gold on dark. Use rarely. */
+  .t-tagline {
+    font-size: clamp(1.375rem, 1.15rem + 1vw, 1.875rem);
+    line-height: 1.2;
+    text-transform: lowercase;
+    color: var(--label);
+  }
+  /* Label: Inter caps, wide tracking. Brand "H4 12 bold". */
+  .t-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--label);
+  }
+  /* Heading: Inter semibold. Brand "H2 16 bold". */
+  .t-heading {
+    font-size: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+    line-height: 1.35;
+    font-weight: 600;
+  }
+  /* Body: never under 16 px. Brand "P1". */
+  .t-body {
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+  /* Meta: location · year lines, captions. Brand "P2". */
+  .t-meta {
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--muted);
+    text-wrap: pretty;
+  }
+  .t-muted {
+    color: var(--muted);
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* 12 / 8 / 4 column grid inside the page margins. */
+  .container-page {
+    padding-left: var(--outer);
+    padding-right: var(--outer);
+  }
+  .grid-page {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: var(--gutter);
+  }
+  @media (min-width: 40rem) {
+    .grid-page {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 64rem) {
+    .grid-page {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+  .section-y {
+    padding-top: var(--section-y);
+    padding-bottom: var(--section-y);
+  }
+}
+
+/* ---------- Textures (vary per section; never one texture across the page) ----------
+   In the components layer, so utilities such as `fixed` on an overlay always win. */
+@layer components {
+  .texture-grid {
+    background-image:
+      linear-gradient(to right, rgb(184 134 59 / 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(184 134 59 / 0.08) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .tone-paper.texture-grid {
+    background-image:
+      linear-gradient(to right, rgb(90 58 40 / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(90 58 40 / 0.07) 1px, transparent 1px);
+  }
+  .texture-grain {
+    position: relative;
+    isolation: isolate;
+  }
+  .texture-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: url("/textures/grain.png");
+    background-size: 160px 160px;
+    opacity: 0.09;
+  }
+  .tone-paper.texture-grain::before {
+    filter: invert(1);
+    opacity: 0.05;
+  }
+}
+
+/* ---------- Motion ---------- */
+/* Reveal: fade up once. Content is visible without JS (the .js class arms it). */
+.js [data-reveal]:not([data-revealed]) {
+  opacity: 0;
+  transform: translateY(16px);
+}
+[data-reveal] {
+  transition:
+    opacity var(--duration-reveal) var(--ease-brand),
+    transform var(--duration-reveal) var(--ease-brand);
+}
+
+/* Line drawings: strokes draw in once when armed by <LineDrawing>. */
+.line-art {
+  color: var(--line);
+}
+/* Every shape is a stroke unless marked data-fill. Stroke width is in viewBox units (--stroke). */
+.line-art :is(path, line, polyline, polygon, circle, ellipse, rect):not([data-fill]) {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: var(--stroke, 1);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.line-art [data-fill] {
+  fill: currentColor;
+  stroke: none;
+}
+.line-art[data-armed] :is(path, line, polyline, polygon, circle, ellipse, rect):not([data-fill]) {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.line-art[data-drawn] :is(path, line, polyline, polygon, circle, ellipse, rect):not([data-fill]) {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset var(--duration-draw) var(--ease-brand);
+  transition-delay: var(--draw-delay, 0ms);
+}
+.line-art[data-armed] [data-fill] {
+  opacity: 0;
+}
+.line-art[data-drawn] [data-fill] {
+  opacity: 1;
+  transition: opacity var(--duration-reveal) var(--ease-brand) calc(var(--duration-draw) * 0.6);
+}
+
+/* Case-study arrival highlight: a gold wash that fades out. */
+@keyframes arrive {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+[data-highlight]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgb(184 134 59 / 0.12);
+  box-shadow: inset 0 0 0 1px rgb(184 134 59 / 0.6);
+  animation: arrive 1800ms var(--ease-brand) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .js [data-reveal]:not([data-revealed]) {
+    transform: none;
+  }
+  .line-art[data-armed] :is(path, line, polyline, polygon, circle, ellipse, rect) {
+    stroke-dashoffset: 0;
+  }
+  .line-art[data-armed] [data-fill] {
+    opacity: 1;
+  }
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
   }
 }
