@@ -57,6 +57,7 @@ V1 has 13 pages. Flooring and skirting share a page (skirting finishes a floor);
 - **/welcome** for the Instagram bio page: an invitation, not a step.
 - Never rename a URL once printed or shared; if one must change, redirect the old one.
 - Track sources with a tag on the same URL: /welcome?utm\_source=instagram, /welcome?utm\_source=qr.
+- Short links hide the tags where they would look messy: **pilihkayu.id/ig** (Instagram bio) forwards to /welcome?utm\_source=instagram, **pilihkayu.id/qr** (catalogue QR code) to /welcome?utm\_source=qr. Set in next.config.ts; never remove one once it is printed or shared.
 
 | Page | URL | Purpose | Key sections | Main action |
 | --- | --- | --- | --- | --- |
