@@ -22,7 +22,7 @@ first 30 seconds. No "coming soon" page. Every link and button works.
 | 2 | /welcome | Instagram bio and QR landing as an app-style opening screen: portrait film behind, Contact us (live), Download catalogue and the three role choices (greyed out until their pages ship), Explore the website. Replaces lnk.bio. |
 | 3 | / (Home) | Hero, what we make (each product opens WhatsApp with its own message until its page exists), why direct from the factory, 5-step process, factory proof, closing call to action. |
 | 3 | /factory (Our Factory = About) | Heritage since 1995, facility facts, production in 3 parts with footage, certifications. |
-| 3+ | Launch basics | Header and footer with only live pages, 404, page titles and share images, sitemap.xml and robots.txt, Google Analytics + Vercel Speed Insights (pulled forward from Phase 8 so we measure from day one). |
+| 3+ | Launch basics | Header and footer with only live pages (the menu includes "Welcome", back to /welcome), 404, page titles and share images, sitemap.xml and robots.txt, Google Analytics + Vercel Speed Insights (pulled forward from Phase 8 so we measure from day one). |
 
 Launch = Phases 2 and 3 merged together. pilihkayu.id then shows the real home page; Instagram bio
 switches to /welcome?utm_source=instagram.

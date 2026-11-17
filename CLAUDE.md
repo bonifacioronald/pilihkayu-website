@@ -88,11 +88,16 @@
 - Group by hierarchy: lines that belong together sit close together (title, tagline and its
   paragraph are one group); bigger gaps only between groups. Never leave a paragraph floating
   far from its title.
-- /welcome is an app-style opening screen: portrait film behind everything at low opacity,
-  fading to espresso under the text and buttons; centred; sound off with a toggle. Main
-  buttons: Contact us and Download catalogue. Then the "Which best describes you?" choice
-  (Architect or designer, Contractor, Project owner) that will lead to /for- pages. Then
-  "Explore the website" to the home page. Never a "visit our website" button.
+- /welcome is an app-style opening screen, designed for the phone first but with a proper
+  desktop layout (never a stretched or cropped phone layout: "lazy for desktop" is a failure).
+  Phone: portrait film behind everything, whole film visible under a soft scrim. Desktop: film
+  uncropped as a full-height panel beside the content. Sound off with a toggle. Main buttons:
+  Contact us and Download catalogue. Then, with clear space, "Which best describes you?" as one
+  smooth dropdown (Architect or designer, Contractor, Project owner), not a row of buttons.
+  Then "Explore the website". The site menu has a "Welcome" link back to this screen.
+- Small headings and questions are plain Inter. Fraunces caps are for real titles only, never
+  for small text.
+- Prefer one interactive control over a stack of "Coming soon" buttons.
 - Anything not ready is shown greyed out, labelled "Coming soon", and cannot be tapped.
 - Video: Ronald edits the clips himself. Tell him the spec (orientation, length, no text) and
   use his file as delivered; do not cut clips out of the captioned reels. Compress for web only.

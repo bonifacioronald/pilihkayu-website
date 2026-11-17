@@ -2,37 +2,69 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import data from "@/content/welcome-links.json";
 import { CertificationMarks } from "@/components/ui/certification-marks";
-import { ArrowRight } from "@/components/ui/icons";
+import { ArrowRight, Check } from "@/components/ui/icons";
 import { Logo } from "@/components/ui/logo";
 import { whatsappUrl } from "@/lib/settings";
+import { track } from "@/lib/analytics";
 import { cx } from "@/lib/cx";
 
-type Item = { id: string; kind?: string; label: string; href?: string; message?: string; status: string };
+type Action = {
+  id: string;
+  kind?: string;
+  label: string;
+  href?: string;
+  message?: string;
+  status: string;
+};
+type Role = {
+  id: string;
+  label: string;
+  href: string;
+  status: string;
+  waNote?: string;
+};
 
-const SOURCES: Record<string, string> = { instagram: "dari Instagram", qr: "dari QR katalog" };
+const SOURCES: Record<string, string> = {
+  instagram: "dari Instagram",
+  qr: "dari QR katalog",
+};
 const VIDEO = "/media/welcome-bg.mp4";
 const POSTER = "/media/welcome-bg-poster.jpg";
 
-const soonTag = <span className="text-[0.625rem] font-semibold tracking-[0.2em] uppercase">Coming soon</span>;
+const control =
+  "inline-flex min-h-11 items-center text-[0.6875rem] font-semibold tracking-[0.2em] uppercase text-paper/85 transition-colors duration-ui ease-brand [@media(hover:hover)]:hover:text-paper";
 
 /**
  * /welcome: the Instagram bio and QR landing, built like an app's opening screen.
- * One job: send the visitor to the right action. The portrait factory film plays behind
- * everything at low opacity and fades into espresso, so text and buttons stay clear.
- * Sound is off until the visitor turns it on. No facts, no extra sections.
+ * One job: send the visitor to the right action.
+ * Phones and tablets: the portrait film fills the screen behind the content; a soft scrim
+ * keeps text readable while the whole film stays visible.
+ * Desktop: the film stands uncropped as a full-height portrait panel on the left; the
+ * greeting and actions sit beside it.
  */
 export function WelcomeScreen() {
+  const router = useRouter();
   const video = useRef<HTMLVideoElement>(null);
+  const picker = useRef<HTMLDivElement>(null);
   const [source, setSource] = useState("dari website");
   const [load, setLoad] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [sound, setSound] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [role, setRole] = useState<Role | null>(null);
+
+  const actions = data.actions as Action[];
+  const roles = data.roles as Role[];
 
   useEffect(() => {
-    const utm = new URLSearchParams(window.location.search).get("utm_source")?.toLowerCase() ?? "";
+    const utm =
+      new URLSearchParams(window.location.search)
+        .get("utm_source")
+        ?.toLowerCase() ?? "";
     if (SOURCES[utm]) setSource(SOURCES[utm]);
     // Poster first; the film starts once the page has loaded. Never autoplays with reduced motion.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -52,14 +84,34 @@ export function WelcomeScreen() {
     const v = video.current;
     if (!load || !v) return;
     v.load();
-    v.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    v.play()
+      .then(() => setPlaying(true))
+      .catch(() => setPlaying(false));
   }, [load]);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onDown = (e: PointerEvent) => {
+      if (picker.current && !picker.current.contains(e.target as Node))
+        setOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onDown);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onDown);
+    };
+  }, [open]);
 
   function togglePlay() {
     const v = video.current;
     if (!v) return;
     if (!load) return setLoad(true);
-    if (v.paused) v.play().then(() => setPlaying(true)).catch(() => {});
+    if (v.paused)
+      v.play()
+        .then(() => setPlaying(true))
+        .catch(() => {});
     else {
       v.pause();
       setPlaying(false);
@@ -74,22 +126,55 @@ export function WelcomeScreen() {
     setSound(next);
     if (next && v.paused) {
       if (!load) setLoad(true);
-      else v.play().then(() => setPlaying(true)).catch(() => {});
+      else
+        v.play()
+          .then(() => setPlaying(true))
+          .catch(() => {});
     }
   }
 
-  const control =
-    "inline-flex min-h-11 items-center text-[0.6875rem] font-semibold tracking-[0.2em] uppercase text-paper/80 transition-colors duration-ui ease-brand [@media(hover:hover)]:hover:text-paper";
-  const actions = data.actions as Item[];
-  const roles = data.roles as Item[];
+  function choose(r: Role) {
+    setOpen(false);
+    track("welcome_button_click", { page: "/welcome", button: `role_${r.id}` });
+    if (r.status === "live") router.push(r.href);
+    else setRole(r);
+  }
+
+  const waMessage = (base?: string) =>
+    `${base ?? "Halo PilihKayu"}${role?.waNote ? `. ${role.waNote}` : ""} (${source})`;
+
+  const controls = (className: string) => (
+    <div className={className}>
+      <button type="button" onClick={togglePlay} className={control}>
+        {playing ? "Pause" : "Play"}
+      </button>
+      <button
+        type="button"
+        onClick={toggleSound}
+        aria-pressed={sound}
+        className={control}
+      >
+        {sound ? "Sound on" : "Sound off"}
+      </button>
+    </div>
+  );
 
   return (
-    <div className="tone-espresso relative isolate flex min-h-dvh flex-col overflow-hidden">
-      {/* Film layer. Phones: full screen. Desktop: a centred portrait column, so the portrait film
-          is never stretched across a wide screen. */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10 lg:left-1/2 lg:w-[36rem] lg:-translate-x-1/2">
-        <div className="absolute inset-0 opacity-50">
-          <Image src={POSTER} alt="" fill priority sizes="(min-width:1024px) 576px, 100vw" className="object-cover" />
+    <div className="tone-espresso relative isolate min-h-dvh lg:flex">
+      {/* Film */}
+      <div className="absolute inset-0 -z-10 overflow-hidden lg:sticky lg:top-0 lg:z-0 lg:h-dvh lg:w-auto lg:shrink-0 lg:[aspect-ratio:9/16]">
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 opacity-60 lg:opacity-100"
+        >
+          <Image
+            src={POSTER}
+            alt=""
+            fill
+            priority
+            sizes="(min-width:1024px) 56vh, 100vw"
+            className="object-cover"
+          />
           <video
             ref={video}
             muted
@@ -104,102 +189,180 @@ export function WelcomeScreen() {
             {load ? <source src={VIDEO} type="video/mp4" /> : null}
           </video>
         </div>
-        {/* Veil on top for the logo; solid espresso from the middle down for the buttons. */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgb(43_26_18/0.6)_0%,rgb(43_26_18/0.15)_20%,rgb(43_26_18/0.5)_40%,rgb(43_26_18/0.95)_58%,#2b1a12_70%)]" />
-        {/* Desktop: the column's sides dissolve into the page. */}
-        <div className="absolute inset-0 hidden bg-[linear-gradient(to_right,#2b1a12_0%,transparent_22%,transparent_78%,#2b1a12_100%)] lg:block" />
+        {/* Phone scrim: darker behind the logo and behind the text, never solid, so the whole film shows. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[linear-gradient(to_bottom,rgb(43_26_18/0.6)_0%,rgb(43_26_18/0.1)_16%,rgb(43_26_18/0.15)_38%,rgb(43_26_18/0.72)_56%,rgb(43_26_18/0.8)_100%)] lg:hidden"
+        />
+        {/* Desktop: a soft foot under the controls only. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-x-0 bottom-0 hidden h-28 bg-[linear-gradient(to_top,rgb(43_26_18/0.7),transparent)] lg:block"
+        />
+        {controls(
+          "absolute inset-x-6 bottom-3 hidden items-center justify-between lg:flex",
+        )}
       </div>
 
-      <header className="flex items-center justify-between px-5 pt-[max(0.5rem,env(safe-area-inset-top))] md:px-10">
-        <button type="button" onClick={togglePlay} className={cx(control, "w-24 justify-start")}>
-          {playing ? "Pause" : "Play"}
-        </button>
-        <Logo />
-        <button type="button" onClick={toggleSound} aria-pressed={sound} className={cx(control, "w-24 justify-end")}>
-          {sound ? "Sound on" : "Sound off"}
-        </button>
-      </header>
-
-      <main id="main" className="mx-auto flex w-full max-w-md flex-1 flex-col justify-end px-5 pt-[34dvh] pb-[max(2rem,env(safe-area-inset-bottom))] text-center">
-        <h1 className="t-title">Welcome to PilihKayu</h1>
-        <p className="mt-3 text-base leading-normal text-paper/85">
-          Solid wood, made to your drawings.
-          <br />
-          Direct from our factory, since 1995.
-        </p>
-
-        <div className="mt-8 grid gap-3">
-          {actions.map((a, i) =>
-            a.status === "live" ? (
-              <a
-                key={a.id}
-                href={a.kind === "whatsapp" ? whatsappUrl(`${a.message ?? "Halo PilihKayu"} (${source})`) : a.href}
-                {...(a.kind === "whatsapp" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                data-track="welcome_button_click"
-                data-track-button={a.id}
-                className={cx(
-                  "flex min-h-14 items-center justify-center px-6 text-base font-semibold tracking-[0.03em] transition-[transform,background-color] duration-ui ease-brand motion-safe:active:scale-[0.98]",
-                  i === 0
-                    ? "bg-paper text-espresso [@media(hover:hover)]:hover:bg-gold"
-                    : "text-paper shadow-[inset_0_0_0_1px_var(--color-gold)]",
-                )}
-              >
-                {a.label}
-              </a>
-            ) : (
-              <button
-                key={a.id}
-                type="button"
-                disabled
-                className="flex min-h-14 cursor-not-allowed items-center justify-center gap-3 px-6 text-base font-semibold tracking-[0.03em] text-stone/80 shadow-[inset_0_0_0_1px_rgb(176_160_143/0.35)]"
-              >
-                {a.label}
-                {soonTag}
-              </button>
-            ),
+      {/* Content */}
+      <div className="flex min-h-dvh flex-1 flex-col">
+        <header className="relative flex items-center justify-center px-5 pt-[max(0.5rem,env(safe-area-inset-top))] lg:justify-start lg:px-[clamp(3rem,6vw,7rem)] lg:pt-8">
+          {controls(
+            "absolute inset-x-5 top-[max(0.5rem,env(safe-area-inset-top))] flex items-center justify-between lg:hidden",
           )}
-        </div>
+          <Logo className="relative" />
+        </header>
 
-        <fieldset className="mt-10" disabled={roles.every((r) => r.status !== "live")}>
-          <legend className="t-break mx-auto mb-1 !text-[0.75rem]">{data.rolesTitle}</legend>
-          <ul>
-            {roles.map((r) => (
-              <li key={r.id} className="border-b border-gold/25">
-                {r.status === "live" && r.href ? (
-                  <Link
-                    href={r.href}
-                    data-track="welcome_button_click"
-                    data-track-button={r.id}
-                    className="flex min-h-13 items-center justify-between gap-4 text-base [@media(hover:hover)]:hover:text-gold"
-                  >
-                    {r.label}
-                    <ArrowRight className="size-5 text-gold" />
-                  </Link>
-                ) : (
-                  <button type="button" disabled className="flex min-h-13 w-full cursor-not-allowed items-center justify-between gap-4 text-base text-stone/80">
-                    {r.label}
-                    {soonTag}
-                  </button>
-                )}
-              </li>
-            ))}
-          </ul>
-        </fieldset>
+        <main
+          id="main"
+          className="mx-auto flex w-full max-w-md flex-1 flex-col justify-end px-5 pt-[36dvh] pb-[max(1.75rem,env(safe-area-inset-bottom))] text-center lg:mx-0 lg:max-w-3xl lg:justify-center lg:px-[clamp(3rem,6vw,7rem)] lg:py-16 lg:text-left"
+        >
+          <h1 className="t-title lg:[font-size:clamp(3rem,2rem+3vw,5rem)] lg:leading-none">
+            Welcome to PilihKayu
+          </h1>
+          <p className="mt-3 text-base leading-normal text-paper/90 lg:mt-5 lg:text-lg">
+            Solid wood, made to your drawings.
+            <br />
+            Direct from our factory, since 1995.
+          </p>
 
-        {data.explore.status === "live" ? (
-          <Link
-            href={data.explore.href}
-            data-track="welcome_button_click"
-            data-track-button={data.explore.id}
-            className="mx-auto mt-8 inline-flex min-h-11 items-center gap-3 text-[0.9375rem] underline decoration-gold decoration-1 underline-offset-[6px] [@media(hover:hover)]:hover:decoration-paper"
+          <div className="mt-8 grid gap-3 lg:mt-10 lg:max-w-sm">
+            {actions.map((a, i) =>
+              a.status === "live" ? (
+                <a
+                  key={a.id}
+                  href={
+                    a.kind === "whatsapp"
+                      ? whatsappUrl(waMessage(a.message))
+                      : a.href
+                  }
+                  {...(a.kind === "whatsapp"
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  data-track="welcome_button_click"
+                  data-track-button={a.id}
+                  className={cx(
+                    "flex min-h-14 items-center justify-center px-6 text-base font-semibold tracking-[0.03em] transition-[transform,background-color] duration-ui ease-brand motion-safe:active:scale-[0.98]",
+                    i === 0
+                      ? "bg-paper text-espresso [@media(hover:hover)]:hover:bg-gold"
+                      : "text-paper shadow-[inset_0_0_0_1px_var(--color-gold)]",
+                  )}
+                >
+                  {a.label}
+                </a>
+              ) : (
+                <button
+                  key={a.id}
+                  type="button"
+                  disabled
+                  className="flex min-h-14 cursor-not-allowed items-center justify-center gap-3 bg-espresso/40 px-6 text-base font-semibold tracking-[0.03em] text-stone shadow-[inset_0_0_0_1px_rgb(176_160_143/0.4)]"
+                >
+                  {a.label}
+                  <span className="text-[0.625rem] font-semibold tracking-[0.2em] uppercase">
+                    Coming soon
+                  </span>
+                </button>
+              ),
+            )}
+          </div>
+
+          {/* Role picker */}
+          <div
+            ref={picker}
+            className="relative mt-14 text-left lg:mt-16 lg:max-w-sm"
           >
-            {data.explore.label}
-            <ArrowRight className="size-4" />
-          </Link>
-        ) : null}
+            <p
+              id="role-label"
+              className="mb-3 text-center text-[0.9375rem] font-medium text-paper lg:text-left"
+            >
+              {data.rolesTitle}
+            </p>
+            <div className="relative">
+              <button
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded={open}
+                aria-labelledby="role-label role-value"
+                onClick={() => setOpen((o) => !o)}
+                className="flex min-h-14 w-full items-center justify-between gap-4 bg-espresso/55 px-5 text-base shadow-[inset_0_0_0_1px_rgb(184_134_59/0.7)] transition-[box-shadow] duration-ui ease-brand [@media(hover:hover)]:hover:shadow-[inset_0_0_0_1px_var(--color-gold)]"
+              >
+                <span
+                  id="role-value"
+                  className={role ? "text-paper" : "text-stone"}
+                >
+                  {role ? role.label : data.rolesPlaceholder}
+                </span>
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className={cx(
+                    "size-5 text-gold transition-transform duration-overlay ease-brand",
+                    open && "rotate-180",
+                  )}
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </button>
+              <ul
+                role="listbox"
+                aria-labelledby="role-label"
+                className={cx(
+                  "absolute inset-x-0 top-[calc(100%+4px)] z-20 origin-top bg-espresso shadow-[inset_0_0_0_1px_rgb(184_134_59/0.7)] transition-[opacity,transform,visibility] ease-brand",
+                  open
+                    ? "visible translate-y-0 scale-100 opacity-100 duration-200"
+                    : "invisible -translate-y-1 scale-[0.98] opacity-0 duration-150 motion-reduce:translate-y-0 motion-reduce:scale-100",
+                )}
+              >
+                {roles.map((r) => (
+                  <li
+                    key={r.id}
+                    role="option"
+                    aria-selected={role?.id === r.id}
+                    className="border-b border-gold/20 last:border-b-0"
+                  >
+                    <button
+                      type="button"
+                      tabIndex={open ? 0 : -1}
+                      onClick={() => choose(r)}
+                      className="flex min-h-13 w-full items-center justify-between gap-4 px-5 text-left text-base transition-colors duration-ui ease-brand [@media(hover:hover)]:hover:bg-paper/5"
+                    >
+                      {r.label}
+                      {role?.id === r.id ? (
+                        <Check className="size-5 text-gold" />
+                      ) : null}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <p
+              aria-live="polite"
+              className="mt-3 min-h-10 text-center text-[0.875rem] leading-snug text-paper/85 lg:text-left"
+            >
+              {role && role.status !== "live"
+                ? "Your page is coming soon. For now, contact us and we’ll help you directly."
+                : ""}
+            </p>
+          </div>
 
-        <CertificationMarks className="mt-10 justify-center gap-x-7 opacity-80 [&_img]:!h-8 [&_li:nth-child(2)_img]:!h-12" />
-      </main>
+          {data.explore.status === "live" ? (
+            <Link
+              href={data.explore.href}
+              data-track="welcome_button_click"
+              data-track-button={data.explore.id}
+              className="mx-auto mt-4 inline-flex min-h-11 items-center gap-3 text-[0.9375rem] underline decoration-gold decoration-1 underline-offset-[6px] lg:mx-0 [@media(hover:hover)]:hover:decoration-paper"
+            >
+              {data.explore.label}
+              <ArrowRight className="size-4" />
+            </Link>
+          ) : null}
+
+          <CertificationMarks className="mt-10 justify-center gap-x-7 opacity-85 lg:mt-14 lg:justify-start [&_img]:!h-8 [&_li:nth-child(2)_img]:!h-12" />
+        </main>
+      </div>
     </div>
   );
 }

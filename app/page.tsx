@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/ui/logo";
 import { Container, Section } from "@/components/ui/section";
@@ -8,8 +9,14 @@ import { settings, whatsappUrl } from "@/lib/settings";
 export default function HoldingPage() {
   return (
     <Section tone="espresso" texture="grain" spacing="none" className="flex min-h-dvh flex-col">
-      <Container className="flex h-[var(--header-h)] items-center border-b border-gold/25">
+      <Container className="flex h-[var(--header-h)] items-center justify-between border-b border-gold/25">
         <Logo />
+        <Link
+          href="/welcome"
+          className="inline-flex min-h-11 items-center text-[0.75rem] font-semibold tracking-[0.2em] uppercase underline decoration-transparent underline-offset-[10px] transition-[text-decoration-color] duration-ui ease-brand [@media(hover:hover)]:hover:decoration-gold"
+        >
+          Welcome
+        </Link>
       </Container>
       <main id="main" className="flex flex-1 flex-col justify-center py-20 lg:py-28">
         <Container>

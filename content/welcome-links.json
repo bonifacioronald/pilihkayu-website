@@ -1,14 +1,50 @@
 {
-  "$comment": "The /welcome screen. status: \"live\" or \"soon\" (shown greyed out, labelled Coming soon, not tappable). Flip to live when the page or file ships. kind \"whatsapp\" opens WhatsApp with message; kind \"page\" links to href.",
+  "$comment": "The /welcome screen. status: \"live\" or \"soon\" (shown greyed out, labelled Coming soon, not tappable). Flip to live when the page or file ships. kind \"whatsapp\" opens WhatsApp with message; kind \"page\" links to href. roles: the dropdown under the buttons. A live role opens its page; a soon role keeps the visitor here and adds waNote to the Contact us message.",
   "actions": [
-    { "id": "contact", "kind": "whatsapp", "label": "Contact us", "message": "Halo PilihKayu, saya ingin konsultasi proyek", "status": "live" },
-    { "id": "catalogue", "kind": "page", "label": "Download catalogue", "href": "/catalogue", "status": "soon" }
+    {
+      "id": "contact",
+      "kind": "whatsapp",
+      "label": "Contact us",
+      "message": "Halo PilihKayu, saya ingin konsultasi proyek",
+      "status": "live"
+    },
+    {
+      "id": "catalogue",
+      "kind": "page",
+      "label": "Download catalogue",
+      "href": "/catalogue",
+      "status": "soon"
+    }
   ],
-  "explore": { "id": "explore", "label": "Explore the website", "href": "/", "status": "live" },
+  "explore": {
+    "id": "explore",
+    "label": "Explore the website",
+    "href": "/",
+    "status": "live"
+  },
   "rolesTitle": "Which best describes you?",
   "roles": [
-    { "id": "architects", "label": "Architect or designer", "href": "/for-architects", "status": "soon" },
-    { "id": "contractors", "label": "Contractor", "href": "/for-contractors", "status": "soon" },
-    { "id": "owners", "label": "Project owner", "href": "/for-owners", "status": "soon" }
-  ]
+    {
+      "id": "architects",
+      "label": "Architect or designer",
+      "href": "/for-architects",
+      "status": "soon",
+      "waNote": "Saya arsitek / desainer interior"
+    },
+    {
+      "id": "contractors",
+      "label": "Contractor",
+      "href": "/for-contractors",
+      "status": "soon",
+      "waNote": "Saya kontraktor"
+    },
+    {
+      "id": "owners",
+      "label": "Project owner",
+      "href": "/for-owners",
+      "status": "soon",
+      "waNote": "Saya pemilik proyek"
+    }
+  ],
+  "rolesPlaceholder": "Choose one"
 }
