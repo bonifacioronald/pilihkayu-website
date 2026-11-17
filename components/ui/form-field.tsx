@@ -3,7 +3,7 @@ import { cx } from "@/lib/cx";
 type FieldProps = {
   id: string;
   label: string;
-  /** Short Indonesian helper label, a few words (e.g. "Kota"). */
+  /** Optional short hint beside the label. English only for now. */
   helper?: string;
   error?: string | null;
   optional?: boolean;

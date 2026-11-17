@@ -22,7 +22,6 @@ export default function NotFound() {
                 <Button
                   href={whatsappUrl("Halo PilihKayu, saya mencari informasi di website tapi halamannya tidak ditemukan (dari website)")}
                   external
-                  helper="Tanya lewat WhatsApp"
                 >
                   Ask us on WhatsApp
                 </Button>

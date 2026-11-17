@@ -143,7 +143,6 @@ export function SiteHeader({
               >
                 {cta.label}
               </a>
-              <p className="mt-2 text-center text-[0.8125rem] text-stone">Chat lewat WhatsApp</p>
             </div>
           ) : null}
         </div>

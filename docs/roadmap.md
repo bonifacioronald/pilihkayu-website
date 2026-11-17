@@ -19,7 +19,7 @@ first 30 seconds. No "coming soon" page. Every link and button works.
 
 | Phase | Page | What it does |
 | --- | --- | --- |
-| 2 | /welcome | Instagram bio and QR landing: logo, one line, proof strip, buttons (Contact us live; Download catalogue "Coming soon"; more as pages ship), short factory loop. Replaces lnk.bio. |
+| 2 | /welcome | Instagram bio and QR landing as an app-style opening screen: portrait film behind, Contact us (live), Download catalogue and the three role choices (greyed out until their pages ship), Explore the website. Replaces lnk.bio. |
 | 3 | / (Home) | Hero, what we make (each product opens WhatsApp with its own message until its page exists), why direct from the factory, 5-step process, factory proof, closing call to action. |
 | 3 | /factory (Our Factory = About) | Heritage since 1995, facility facts, production in 3 parts with footage, certifications. |
 | 3+ | Launch basics | Header and footer with only live pages, 404, page titles and share images, sitemap.xml and robots.txt, Google Analytics + Vercel Speed Insights (pulled forward from Phase 8 so we measure from day one). |
@@ -33,7 +33,7 @@ switches to /welcome?utm_source=instagram.
 | --- | --- | --- | --- |
 | v1.1 | 4 | /flooring, /ceilings, /custom | Final prices (13 Nov meeting), reshot samples, product photos, renders |
 | v1.2 | 5 | /projects + Semarang and Furniture heritage case studies | Mr. YH's permission, project photos per section, furniture photos and heritage facts |
-| v1.3 | 6 | /how-we-work, /for-architects, /for-contractors | Payment terms, delivery areas, FAQ answers, samples and partner terms |
+| v1.3 | 6 | /how-we-work, /for-architects, /for-contractors, /for-owners (the three role choices on /welcome switch on here) | Payment terms, delivery areas, FAQ answers, samples and partner terms |
 | v1.4 | 7 | /catalogue + lead form → Google Sheet + email + WhatsApp | Final catalogue PDF, Leads Sheet script URL |
 | v1.5 | 8 | Popup banner, full QA, Search Console | Founding-client offer wording (optional) |
 

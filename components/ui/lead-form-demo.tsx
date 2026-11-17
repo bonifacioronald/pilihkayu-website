@@ -62,13 +62,13 @@ export function LeadFormDemo() {
 
   return (
     <form noValidate onSubmit={onSubmit} className="grid gap-x-[var(--gutter)] gap-y-2 md:grid-cols-2">
-      <TextField id="lead-name" name="name" label="Name" helper="Nama" autoComplete="name" value={values.name} onChange={set("name")} error={errors.name} />
-      <TextField id="lead-phone" name="phone" type="tel" inputMode="tel" label="WhatsApp number" helper="Nomor WhatsApp" autoComplete="tel" placeholder="0812 3456 7890…" value={values.phone} onChange={set("phone")} error={errors.phone} />
-      <TextField id="lead-city" name="city" label="City" helper="Kota" autoComplete="address-level2" value={values.city} onChange={set("city")} error={errors.city} />
-      <SelectField id="lead-role" name="role" label="You are" helper="Peran" options={ROLES} value={values.role} onChange={set("role")} error={errors.role} />
-      <SelectField id="lead-product" name="product" label="Product interest" helper="Produk" optional options={PRODUCTS} value={values.product} onChange={set("product")} className="md:col-span-2" />
+      <TextField id="lead-name" name="name" label="Name" autoComplete="name" value={values.name} onChange={set("name")} error={errors.name} />
+      <TextField id="lead-phone" name="phone" type="tel" inputMode="tel" label="WhatsApp number" autoComplete="tel" placeholder="0812 3456 7890…" value={values.phone} onChange={set("phone")} error={errors.phone} />
+      <TextField id="lead-city" name="city" label="City" autoComplete="address-level2" value={values.city} onChange={set("city")} error={errors.city} />
+      <SelectField id="lead-role" name="role" label="You are" options={ROLES} value={values.role} onChange={set("role")} error={errors.role} />
+      <SelectField id="lead-product" name="product" label="Product interest" optional options={PRODUCTS} value={values.product} onChange={set("product")} className="md:col-span-2" />
       <div className="mt-4 md:col-span-2">
-        <Button type="submit" helper="Kirim" loading={state === "sending"}>
+        <Button type="submit" loading={state === "sending"}>
           Send
         </Button>
       </div>

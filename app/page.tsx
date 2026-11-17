@@ -20,7 +20,7 @@ export default function HoldingPage() {
             tagline="direct from our factory, since 1995"
             actions={
               <>
-                <Button href={whatsappUrl()} external helper="Chat lewat WhatsApp">
+                <Button href={whatsappUrl()} external>
                   Discuss your project
                 </Button>
                 <Button variant="link" href={settings.instagram.url} external>

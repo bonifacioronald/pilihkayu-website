@@ -264,7 +264,7 @@ export default function StyleguidePage() {
 
             <Specimen name="Buttons" note="Primary: paper fill on dark. Secondary: 1 px gold outline. Link: gold underline. One primary per screen.">
               <div className="flex flex-wrap items-start gap-x-8 gap-y-6">
-                <Button href={whatsappUrl()} external helper="Chat lewat WhatsApp">
+                <Button href={whatsappUrl()} external>
                   Discuss your project
                 </Button>
                 <Button variant="secondary" href="#tokens">
@@ -429,7 +429,7 @@ export default function StyleguidePage() {
                 tagline="direct from our factory, since 1995"
                 actions={
                   <>
-                    <Button href={whatsappUrl()} external helper="Chat lewat WhatsApp">
+                    <Button href={whatsappUrl()} external>
                       Discuss your project
                     </Button>
                     {settings.catalogue.available ? (
@@ -453,30 +453,7 @@ export default function StyleguidePage() {
                 </div>
               </Grid>
             </Container>
-            {/* Credibility strip */}
-            <Container className="pt-16 pb-24 lg:pt-24 lg:pb-32">
-              <Grid className="gap-y-px">
-                <ul className="tabular col-span-4 grid grid-cols-2 border-t border-l border-gold/40 md:col-span-8 md:grid-cols-4 lg:col-span-9">
-                  {[
-                    { n: "1995", t: "Since 1995, from a single sawmill" },
-                    { n: "11,000 m²", t: "Facility in Indonesia" },
-                    { n: "250", plus: true, t: "Skilled craftspeople" },
-                    { n: "SVLK · FSC® · JAS", t: "Legality, sourcing and grading" },
-                  ].map((s) => (
-                    <li key={s.n} className="flex min-h-36 flex-col justify-between gap-6 border-r border-b border-gold/40 p-4 lg:min-h-44 lg:p-5">
-                      <p className="t-meta">{s.t}</p>
-                      <p className="t-content !text-[1.625rem] normal-case lg:!text-[2rem]">
-                        {s.n}
-                        {"plus" in s && s.plus ? <span className="font-sans font-light">+</span> : null}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-                <div className="col-span-4 md:col-span-3 lg:col-span-3">
-                  <Placeholder ratio="4 / 5" label="Asset pending · factory loop · 4:5" />
-                </div>
-              </Grid>
-            </Container>
+            <div className="pb-24 lg:pb-32" />
           </Section>
 
           {/* B. Projects grid */}

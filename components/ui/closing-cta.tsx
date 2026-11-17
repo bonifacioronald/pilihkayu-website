@@ -19,7 +19,7 @@ export function ClosingCta({
           id={id ? `${id}-title` : undefined}
           title="Let’s discuss your next project"
           actions={
-            <Button href={whatsappUrl(message)} external helper="Chat lewat WhatsApp">
+            <Button href={whatsappUrl(message)} external>
               Discuss your project
             </Button>
           }

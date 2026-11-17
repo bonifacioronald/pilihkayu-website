@@ -6,7 +6,7 @@ type Variant = "primary" | "secondary" | "link";
 
 type CommonProps = {
   variant?: Variant;
-  /** Short Indonesian helper under the button, a few words only (e.g. "Chat lewat WhatsApp"). */
+  /** Optional short line under the button. English only for now (no Indonesian on pages). */
   helper?: string;
   className?: string;
   children: React.ReactNode;

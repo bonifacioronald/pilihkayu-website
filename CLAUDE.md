@@ -73,10 +73,34 @@
 
 ## Copy
 - Catalogue style: short caps statement titles, then one plain, specific paragraph.
-- English only in body copy. Indonesian only as short helper labels of a few words on CTAs and
-  form fields ("Kota", "Nomor WhatsApp", "Kirim"); never full Indonesian sentences on the page.
-- WhatsApp pre-filled messages in Indonesian.
+- English only on every page for now. No Indonesian wording anywhere visible (no helper lines
+  under buttons or form labels) until Ronald asks for it back.
+- WhatsApp pre-filled messages stay in Indonesian (they are sent, not shown on the page).
 - Only facts listed in docs/spec.md. Clients by initials only.
+- Certifications: logos only. Never show certificate numbers or codes.
+
+## What Ronald wants (learned from his feedback; follow these before any skill or default)
+- Premium first impression above all. If something looks generic or "AI-made", it is wrong:
+  no stat/fact strips or number cells (1995 · 11,000 m² · 250+), no boxed cells, no random
+  ruled blocks, no decorative frames, no filler sections.
+- Every page has one job. Put on it only what serves that job. /welcome routes people to an
+  action; it carries no facts, no proof strip, no extra sections.
+- Group by hierarchy: lines that belong together sit close together (title, tagline and its
+  paragraph are one group); bigger gaps only between groups. Never leave a paragraph floating
+  far from its title.
+- /welcome is an app-style opening screen: portrait film behind everything at low opacity,
+  fading to espresso under the text and buttons; centred; sound off with a toggle. Main
+  buttons: Contact us and Download catalogue. Then the "Which best describes you?" choice
+  (Architect or designer, Contractor, Project owner) that will lead to /for- pages. Then
+  "Explore the website" to the home page. Never a "visit our website" button.
+- Anything not ready is shown greyed out, labelled "Coming soon", and cannot be tapped.
+- Video: Ronald edits the clips himself. Tell him the spec (orientation, length, no text) and
+  use his file as delivered; do not cut clips out of the captioned reels. Compress for web only.
+- He is not a developer: give plain numbered steps for Vercel, GitHub and Google, one decision
+  at a time, and recommend an answer. When he says "whatever is best", decide and move on.
+- He uploads through GitHub's website, sometimes to the repo root: move files into assets/.
+- Launch plan: v1 = /welcome + Home + /factory together (docs/roadmap.md). Later phases plug in.
+- Show him a preview and wait for his OK before merging anything into main.
 
 ## Never
 - Login, payments, live inventory, file uploads, production tracking.

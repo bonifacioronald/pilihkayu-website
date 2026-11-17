@@ -125,7 +125,7 @@ All in `components/ui/` unless noted. Shown on /styleguide.
 | Header + mobile menu | `site-header.tsx` | Sticky. Desktop: logo, links (Inter caps), one secondary CTA. Below 1024 px: "Menu" opens a full-screen overlay (focus kept inside, Esc closes). Skip link included. |
 | Footer | `site-footer.tsx` | Logo, tagline, contact, certification codes (logos pending), legal note from catalogue p.15. |
 | Logo | `logo.tsx` | Mark + wordmark, `tone="paper"` on dark, `"espresso"` on paper. |
-| Button | `button.tsx` | `primary` (paper fill on dark, espresso fill on paper, gold on hover), `secondary` (1 px outline), `link` (gold underline + arrow). `helper` adds a short Indonesian line under it. `comingSoon` renders a disabled button labelled "Coming soon". `loading` shows "Sending…". |
+| Button | `button.tsx` | `primary` (paper fill on dark, espresso fill on paper, gold on hover), `secondary` (1 px outline), `link` (gold underline + arrow). `helper` adds an optional short line under it (unused for now: English only). `comingSoon` renders a disabled button labelled "Coming soon". `loading` shows "Sending…". |
 | Section / Container / Grid / GoldRule | `section.tsx` | See §3–4. `GoldRule short` is the 64 px divider. |
 | TitleBlock | `title-block.tsx` | Title + offset paragraph + actions; `size` display/title/content; `align` left/right; optional `label`, `tagline`. |
 | TaggedTitle | `title-block.tsx` | Title with the terracotta bar (`edge`: from the page edge; `inline`: short bar). |
@@ -138,14 +138,13 @@ All in `components/ui/` unless noted. Shown on /styleguide.
 | DimensionLine | `dimension-line.tsx` | Horizontal or vertical, end ticks, centred label ("L: <1800 mm"). |
 | LineDrawing | `line-drawing.tsx` | See §7. |
 | Reveal | `reveal.tsx` | Fade-up once. Content is visible without JavaScript. |
-| Form fields | `form-field.tsx` | `TextField`, `SelectField`, `isIndonesianMobile()`. English label + short Indonesian helper ("Kota"), error under the field, `aria-invalid`, focus moves to the first error. |
+| Form fields | `form-field.tsx` | `TextField`, `SelectField`, `isIndonesianMobile()`. English label, error under the field, `aria-invalid`, focus moves to the first error. |
 | Lead form pattern | `lead-form-demo.tsx` | The /catalogue form (Phase 7) without the sending. |
 | PopupBanner | `popup-banner.tsx` | After 20 s or half a page, once; closed = hidden 7 days; never on /catalogue or /welcome. |
 | ClosingCta | `closing-cta.tsx` | Deep-red block from catalogue p.14 with WhatsApp button and contact list. |
 | Icons | `icons.tsx` | One set: 24 px grid, 1.5 stroke, square caps. |
-| FactoryLoop | `factory-loop.tsx` | Short muted loop of real footage. Poster image paints first; the video starts only after the page has loaded and while on screen; always has a Pause/Play button; never autoplays with reduced motion. Encode loops as H.264 MP4, 720 px, no audio, under 10 s, under ~600 KB, with a poster JPG. |
-| CertificationMarks | `certification-marks.tsx` | SVLK, FSC, JAS single-colour marks (`public/certifications/`, paper or espresso) with codes. |
-| WelcomeLinks | `components/welcome-links.tsx` | /welcome buttons from `content/welcome-links.json`: first WhatsApp link is the primary button, the rest are ruled rows; "soon" rows are disabled and labelled. WhatsApp message notes the source (Instagram or catalogue QR) from `utm_source`. |
+| CertificationMarks | `certification-marks.tsx` | SVLK, FSC, JAS single-colour marks (`public/certifications/`, paper or espresso). Logos only, never certificate numbers. |
+| WelcomeScreen | `components/welcome-screen.tsx` | The /welcome opening screen; see §8. Background film: portrait 9:16 MP4 (540×960, H.264, with audio), poster JPG, loads after the page. |
 | Placeholder | `placeholder.tsx` | "Asset pending · ratio". Flat ground, fine hatching, plain label. Never imitates content. |
 | ProjectsGrid, ProjectCard | `components/projects/` | See §9. |
 | CaseStudyHeader, CaseStudySectionBlock, CaseStudyIndex | `components/projects/` | See §9. |
@@ -170,9 +169,15 @@ Three kinds of image, each with a job:
 ## 8. Copy
 
 - Catalogue style: short caps titles that make a statement ("From our roots to your next space", "Every step crafted to fit your space"), then one plain, specific paragraph.
-- English only in body copy. Indonesian appears only as a short helper of a few words on CTAs and form fields ("Chat lewat WhatsApp", "Kota", "Nomor WhatsApp", "Kirim"). Never a full Indonesian sentence on the page, never Indonesian mixed into English paragraphs. WhatsApp pre-filled messages stay in Indonesian.
+- English only on every page for now (decided 17 Nov 2026): no Indonesian helper lines under buttons or form labels. WhatsApp pre-filled messages stay in Indonesian.
 - Error messages say what to fix, in English.
 - Only facts listed in `docs/spec.md` (Copy & content rules). Clients by initials only.
+- Certifications appear as logos only, never with certificate numbers.
+- No stat strips or number cells. Facts are written into sentences next to real proof.
+
+**Grouping.** Title, tagline and paragraph form one group (tight spacing: 12–28 px); actions sit 40–48 px below; sections 96–160 px apart. `TitleBlock` does this; on phones the paragraph aligns with the title (no indent).
+
+**/welcome** is the one centred page: an app-style opening screen (`components/welcome-screen.tsx`, content in `content/welcome-links.json`). Portrait film behind everything at 50 % opacity, fading to solid espresso behind the buttons; on desktop the film is a centred portrait column. Pause and Sound controls in the top corners; sound is off by default. Order: logo, welcome title and one line, Contact us (primary), Download catalogue, "Which best describes you?" (three roles), Explore the website, certification logos. Items not ready are greyed out and labelled "Coming soon".
 
 ## 9. Projects: many grid items, few detail pages
 

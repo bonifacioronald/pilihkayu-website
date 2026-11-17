@@ -38,28 +38,28 @@ export function TitleBlock({
 }: TitleBlockProps) {
   const right = align === "right";
   return (
-    <div className={cx("grid-page gap-y-8 lg:gap-y-12", className)}>
+    <div className={cx("grid-page gap-y-5 lg:gap-y-7", className)}>
       <div
         className={cx(
           "col-span-4 md:col-span-7 lg:col-span-9",
           right && "md:col-start-2 lg:col-start-4 text-right",
         )}
       >
-        {label ? <p className="t-label mb-5 lg:mb-6">{label}</p> : null}
+        {label ? <p className="t-label mb-4">{label}</p> : null}
         <Tag id={id} className={sizeClass[size]}>
           {title}
         </Tag>
-        {tagline ? <p className="t-tagline mt-4 lg:mt-5">{tagline}</p> : null}
+        {tagline ? <p className="t-tagline mt-3 lg:mt-4">{tagline}</p> : null}
       </div>
       {children || actions ? (
         <div
           className={cx(
-            "col-span-4 col-start-1 pl-[12%] md:col-span-5 md:pl-0 lg:col-span-5",
+            "col-span-4 col-start-1 md:col-span-5 lg:col-span-5",
             right ? "md:col-start-4 lg:col-start-7" : "md:col-start-3 lg:col-start-6",
           )}
         >
-          {children ? <div className="t-body t-muted max-w-[60ch] space-y-4">{children}</div> : null}
-          {actions ? <div className="mt-8 flex flex-wrap items-start gap-x-8 gap-y-5">{actions}</div> : null}
+          {children ? <div className="t-body t-muted max-w-[52ch] space-y-3 !leading-[1.5]">{children}</div> : null}
+          {actions ? <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 lg:mt-12">{actions}</div> : null}
         </div>
       ) : null}
     </div>

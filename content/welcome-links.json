@@ -1,16 +1,14 @@
 {
-  "$comment": "Buttons on /welcome, in order. status: \"live\" or \"soon\" (shown disabled, labelled Coming soon). Flip a button to live when its page ships. kind \"whatsapp\" opens WhatsApp with message; kind \"page\" links to href.",
-  "links": [
-    {
-      "id": "contact",
-      "kind": "whatsapp",
-      "label": "Contact us",
-      "helper": "Chat lewat WhatsApp",
-      "message": "Halo PilihKayu, saya ingin konsultasi proyek",
-      "status": "live"
-    },
-    { "id": "website", "kind": "page", "label": "Visit our website", "href": "/", "status": "soon" },
-    { "id": "factory", "kind": "page", "label": "Our factory", "href": "/factory", "status": "soon" },
+  "$comment": "The /welcome screen. status: \"live\" or \"soon\" (shown greyed out, labelled Coming soon, not tappable). Flip to live when the page or file ships. kind \"whatsapp\" opens WhatsApp with message; kind \"page\" links to href.",
+  "actions": [
+    { "id": "contact", "kind": "whatsapp", "label": "Contact us", "message": "Halo PilihKayu, saya ingin konsultasi proyek", "status": "live" },
     { "id": "catalogue", "kind": "page", "label": "Download catalogue", "href": "/catalogue", "status": "soon" }
+  ],
+  "explore": { "id": "explore", "label": "Explore the website", "href": "/", "status": "live" },
+  "rolesTitle": "Which best describes you?",
+  "roles": [
+    { "id": "architects", "label": "Architect or designer", "href": "/for-architects", "status": "soon" },
+    { "id": "contractors", "label": "Contractor", "href": "/for-contractors", "status": "soon" },
+    { "id": "owners", "label": "Project owner", "href": "/for-owners", "status": "soon" }
   ]
 }
