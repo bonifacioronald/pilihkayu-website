@@ -165,7 +165,7 @@ export function WelcomeScreen() {
       <div className="absolute inset-0 -z-10 overflow-hidden lg:sticky lg:top-0 lg:z-0 lg:h-dvh lg:w-auto lg:shrink-0 lg:[aspect-ratio:9/16]">
         <div
           aria-hidden="true"
-          className="absolute inset-0 opacity-60 lg:opacity-100"
+          className="absolute inset-0 opacity-40 lg:opacity-100"
         >
           <Image
             src={POSTER}
@@ -192,7 +192,7 @@ export function WelcomeScreen() {
         {/* Phone scrim: darker behind the logo and behind the text, never solid, so the whole film shows. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(to_bottom,rgb(43_26_18/0.6)_0%,rgb(43_26_18/0.1)_16%,rgb(43_26_18/0.15)_38%,rgb(43_26_18/0.72)_56%,rgb(43_26_18/0.8)_100%)] lg:hidden"
+          className="absolute inset-0 bg-[linear-gradient(to_bottom,rgb(43_26_18/0.55)_0%,rgb(43_26_18/0.1)_14%,rgb(43_26_18/0.2)_30%,rgb(43_26_18/0.78)_46%,rgb(43_26_18/0.86)_100%)] lg:hidden"
         />
         {/* Desktop: a soft foot under the controls only. */}
         <div
