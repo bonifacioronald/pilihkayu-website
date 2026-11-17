@@ -1,3 +1,5 @@
+import Link from "next/link";
+import nav from "@/content/navigation.json";
 import { settings, whatsappUrl } from "@/lib/settings";
 import { GoldRule } from "./section";
 import { Instagram, Mail, Phone } from "./icons";
@@ -13,6 +15,20 @@ export function SiteFooter() {
         <div className="col-span-4 md:col-span-8 lg:col-span-4">
           <Logo />
           <p className="t-tagline mt-6">bringing your designs to life</p>
+          <nav aria-label="Footer" className="mt-8">
+            <ul className="flex flex-wrap gap-x-6">
+              {nav.items.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="inline-flex min-h-11 items-center text-base underline decoration-transparent underline-offset-[6px] transition-[text-decoration-color] duration-ui ease-brand [@media(hover:hover)]:hover:decoration-gold"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
 
         <div className="col-span-4 md:col-span-4 lg:col-span-4 lg:col-start-6">
@@ -46,7 +62,7 @@ export function SiteFooter() {
 
         <div className="col-span-4 md:col-span-8 lg:col-span-12">
           <GoldRule />
-          <p className="t-meta mt-6 max-w-[72ch]">
+          <p className="t-meta mt-6 max-w-[62ch]">
             © {year} PilihKayu. Wood grain, colour and texture vary naturally, and actual finishes may differ from
             digital samples. Project visualisations are labelled accordingly. Materials, specifications, availability and
             pricing are subject to confirmation. Final scope and lead times are agreed in your project quotation.

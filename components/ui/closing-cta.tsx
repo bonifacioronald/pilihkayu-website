@@ -43,7 +43,7 @@ export function ClosingCta({
           </ul>
           <div className="col-span-4 mt-10 md:col-span-4 md:mt-0 lg:col-span-4 lg:col-start-6">
             <GoldRule short />
-            <h3 className="t-heading mt-6">Exclusive benefits for contractors &amp; architects</h3>
+            <h3 className="t-heading mt-6 max-w-[28ch] text-balance">Exclusive benefits for contractors &amp; architects</h3>
             <p className="t-muted mt-2 text-base leading-relaxed">
               Access project pricing, material samples, dedicated coordination and repeat-order support. Contact us to
               discuss partnership terms that bring greater value to your projects.

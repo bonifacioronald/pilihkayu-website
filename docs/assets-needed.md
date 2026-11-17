@@ -48,7 +48,7 @@ Used on Home (credibility strip), /factory and /welcome.
   6. Storage with forklift, or loading (scale)
 
   The site plays at most one clip per screen, muted and looping, and only on Home (credibility strip), /factory and /welcome. More clips would slow the pages down without showing anything new. If any of the 6 also exists as a steady **portrait** shot, send that too for phones.
-- [ ] **P1 Factory stills** (landscape unless noted):
+- [x] **P1 Factory stills** (received 17 Nov: 11 photos; kilns and people-at-work close-ups still welcome later)
   - [ ] Facility wide shot (the whole hall)
   - [ ] Timber stock / storage
   - [ ] Kiln-drying chambers
