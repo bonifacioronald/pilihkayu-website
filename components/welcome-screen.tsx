@@ -65,7 +65,9 @@ export function WelcomeScreen() {
       new URLSearchParams(window.location.search)
         .get("utm_source")
         ?.toLowerCase() ?? "";
+    // The Instagram bio links to plain /welcome; the Instagram app's own browser identifies itself.
     if (SOURCES[utm]) setSource(SOURCES[utm]);
+    else if (/Instagram/i.test(navigator.userAgent)) setSource(SOURCES.instagram);
     // Poster first; the film starts once the page has loaded. Never autoplays with reduced motion.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let timer: number | undefined;
