@@ -162,10 +162,10 @@ export function WelcomeScreen() {
   return (
     <div className="tone-espresso relative isolate min-h-dvh lg:flex">
       {/* Film */}
-      <div className="absolute inset-0 -z-10 overflow-hidden lg:sticky lg:top-0 lg:z-0 lg:h-dvh lg:w-auto lg:shrink-0 lg:[aspect-ratio:9/16]">
+      <div className="absolute inset-x-0 top-0 -z-10 h-[66dvh] overflow-hidden lg:sticky lg:top-0 lg:z-0 lg:h-dvh lg:w-auto lg:shrink-0 lg:[aspect-ratio:9/16]">
         <div
           aria-hidden="true"
-          className="absolute inset-0 opacity-40 lg:opacity-100"
+          className="absolute inset-0 opacity-75 lg:opacity-100"
         >
           <Image
             src={POSTER}
@@ -189,10 +189,11 @@ export function WelcomeScreen() {
             {load ? <source src={VIDEO} type="video/mp4" /> : null}
           </video>
         </div>
-        {/* Phone scrim: darker behind the logo and behind the text, never solid, so the whole film shows. */}
+        {/* Phone: the film fills the top two thirds, clear in the middle where the subject is; it
+            dissolves into solid espresso before the buttons, so nothing sits behind them. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[linear-gradient(to_bottom,rgb(43_26_18/0.55)_0%,rgb(43_26_18/0.1)_14%,rgb(43_26_18/0.2)_30%,rgb(43_26_18/0.78)_46%,rgb(43_26_18/0.86)_100%)] lg:hidden"
+          className="absolute inset-0 bg-[linear-gradient(to_bottom,rgb(43_26_18/0.6)_0%,rgb(43_26_18/0.05)_16%,rgb(43_26_18/0.05)_46%,rgb(43_26_18/0.8)_66%,#2b1a12_92%)] lg:hidden"
         />
         {/* Desktop: a soft foot under the controls only. */}
         <div
@@ -215,7 +216,7 @@ export function WelcomeScreen() {
 
         <main
           id="main"
-          className="mx-auto flex w-full max-w-md flex-1 flex-col justify-end px-5 pt-[36dvh] pb-[max(1.75rem,env(safe-area-inset-bottom))] text-center lg:mx-0 lg:max-w-3xl lg:justify-center lg:px-[clamp(3rem,6vw,7rem)] lg:py-16 lg:text-left"
+          className="mx-auto flex w-full max-w-md flex-1 flex-col justify-end px-5 pt-[41dvh] pb-[max(1.75rem,env(safe-area-inset-bottom))] text-center lg:mx-0 lg:max-w-3xl lg:justify-center lg:px-[clamp(3rem,6vw,7rem)] lg:py-16 lg:text-left"
         >
           <h1 className="t-title lg:[font-size:clamp(3rem,2rem+3vw,5rem)] lg:leading-none">
             Welcome to PilihKayu
@@ -255,7 +256,7 @@ export function WelcomeScreen() {
                   key={a.id}
                   type="button"
                   disabled
-                  className="flex min-h-14 cursor-not-allowed items-center justify-center gap-3 bg-espresso/40 px-6 text-base font-semibold tracking-[0.03em] text-stone shadow-[inset_0_0_0_1px_rgb(176_160_143/0.4)]"
+                  className="flex min-h-14 cursor-not-allowed items-center justify-center gap-3 bg-espresso px-6 text-base font-semibold tracking-[0.03em] text-stone shadow-[inset_0_0_0_1px_rgb(176_160_143/0.4)]"
                 >
                   {a.label}
                   <span className="text-[0.625rem] font-semibold tracking-[0.2em] uppercase">
@@ -284,7 +285,7 @@ export function WelcomeScreen() {
                 aria-expanded={open}
                 aria-labelledby="role-label role-value"
                 onClick={() => setOpen((o) => !o)}
-                className="flex min-h-14 w-full items-center justify-between gap-4 bg-espresso/55 px-5 text-base shadow-[inset_0_0_0_1px_rgb(184_134_59/0.7)] transition-[box-shadow] duration-ui ease-brand [@media(hover:hover)]:hover:shadow-[inset_0_0_0_1px_var(--color-gold)]"
+                className="flex min-h-14 w-full items-center justify-between gap-4 bg-espresso px-5 text-base shadow-[inset_0_0_0_1px_rgb(184_134_59/0.7)] transition-[box-shadow] duration-ui ease-brand [@media(hover:hover)]:hover:shadow-[inset_0_0_0_1px_var(--color-gold)]"
               >
                 <span
                   id="role-value"

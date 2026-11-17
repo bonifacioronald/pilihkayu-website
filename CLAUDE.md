@@ -90,7 +90,8 @@
   far from its title.
 - /welcome is an app-style opening screen, designed for the phone first but with a proper
   desktop layout (never a stretched or cropped phone layout: "lazy for desktop" is a failure).
-  Phone: portrait film behind everything, whole film visible under a soft scrim. Desktop: film
+  Phone: portrait film in the top two thirds, subject visible in the clear middle, dissolving
+  to solid espresso before the buttons (buttons are solid, never see-through). Desktop: film
   uncropped as a full-height panel beside the content. Sound off with a toggle. Main buttons:
   Contact us and Download catalogue. Then, with clear space, "Which best describes you?" as one
   smooth dropdown (Architect or designer, Contractor, Project owner), not a row of buttons.
@@ -103,7 +104,8 @@
   use his file as delivered; do not cut clips out of the captioned reels. Compress for web only.
 - He is not a developer: give plain numbered steps for Vercel, GitHub and Google, one decision
   at a time, and recommend an answer. When he says "whatever is best", decide and move on.
-- He uploads through GitHub's website, sometimes to the repo root: move files into assets/.
+- He uploads through GitHub's website, sometimes to the repo root or the wrong folder: move
+  files into the right assets/ subfolder (see assets/README.md) and keep the repo root tidy.
 - Launch plan: v1 = /welcome + Home + /factory together (docs/roadmap.md). Later phases plug in.
 - Show him a preview and wait for his OK before merging anything into main.
 
