@@ -98,7 +98,7 @@ export function FlooringCard({ id, name, finish, still, video, href, specs, size
           <span className="underline decoration-transparent decoration-1 underline-offset-[6px] transition-[text-decoration-color] duration-ui ease-brand [@media(hover:hover)]:group-hover:decoration-[var(--rule)]">
             {name}
           </span>
-        </h3>
+        </Heading>
         <p className="t-label">{finish}</p>
       </div>
       <dl className="tabular mt-4 space-y-3 border-t border-[var(--rule)]/40 pt-4 text-[0.9375rem]">
