@@ -16,12 +16,15 @@ export function HomeHero() {
       {/* Drawing */}
       <div
         aria-hidden="true"
-        className="relative h-[46vh] max-h-[26rem] lg:absolute lg:inset-y-[6%] lg:right-[-6%] lg:left-[44%] lg:h-auto lg:max-h-none"
+        className="relative h-[46vh] max-h-[26rem] lg:absolute lg:inset-y-[4%] lg:right-[-6%] lg:left-[34%] lg:h-auto lg:max-h-none"
       >
-        <div
-          className="hero-sketch absolute inset-0 bg-gold opacity-60"
-          style={{ "--art": "url(/drawings/interior-living.webp)" } as React.CSSProperties}
-        />
+        {/* Feathered on the text side (and softly at the foot), so drawing and words read as one scene. */}
+        <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,#000_70%,transparent),linear-gradient(to_right,transparent,#000_45%)] [mask-composite:intersect] [-webkit-mask-composite:source-in] lg:[mask-image:linear-gradient(to_bottom,#000_78%,transparent),linear-gradient(to_right,transparent_2%,#000_42%)]">
+          <div
+            className="hero-sketch absolute inset-0 bg-gold opacity-[0.28]"
+            style={{ "--art": "url(/drawings/interior-living.webp)" } as React.CSSProperties}
+          />
+        </div>
       </div>
 
       <div className="container-page relative lg:flex lg:min-h-[calc(100dvh-var(--header-h)-5rem)] lg:items-center">

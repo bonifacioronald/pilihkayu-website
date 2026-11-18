@@ -3,9 +3,7 @@ import Image from "next/image";
 import { SiteChrome } from "@/components/site-chrome";
 import { Button } from "@/components/ui/button";
 import { ClosingCta } from "@/components/ui/closing-cta";
-import { NumberedSteps } from "@/components/ui/numbered-steps";
 import { Container, Grid, Section } from "@/components/ui/section";
-import { TitleBlock } from "@/components/ui/title-block";
 import { settings, whatsappUrl } from "@/lib/settings";
 
 export const metadata: Metadata = {
@@ -67,17 +65,20 @@ export default function CataloguePage() {
                 ) : null}
               </div>
 
+              <h2 className="t-label mt-14 mb-4">How to order</h2>
+              <ol className="border-t border-[var(--rule)]/60">
+                {steps.map((step, i) => (
+                  <li key={step.title} className="grid grid-cols-[2rem_1fr] gap-x-3 border-b border-[var(--rule)]/40 py-3">
+                    <span className="t-meta tabular pt-0.5">{String(i + 1).padStart(2, "0")}</span>
+                    <p className="text-[0.9375rem]">
+                      <span className="font-semibold">{step.title}.</span> <span className="t-muted">{step.text}</span>
+                    </p>
+                  </li>
+                ))}
+              </ol>
+
             </div>
           </Grid>
-        </Container>
-      </Section>
-
-      <Section tone="espresso" texture="grid" aria-labelledby="order-title">
-        <Container>
-          <TitleBlock id="order-title" title="How to order" align="right">
-            <p>Every step crafted to fit your space. We keep you informed from approval through production and delivery.</p>
-          </TitleBlock>
-          <NumberedSteps className="mt-16 lg:mt-24" steps={steps} />
         </Container>
       </Section>
 

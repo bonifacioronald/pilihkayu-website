@@ -240,7 +240,7 @@ export default function HomePage() {
                     <Image src="/photos/factory/timber-stack-up.jpg" alt="Sawn timber stacked under the factory roof" fill sizes="(min-width:1024px) 18vw, 45vw" className="object-cover" />
                   </div>
                   <div className="relative aspect-[4/5] overflow-hidden">
-                    <Image src="/photos/factory/hall-wide.jpg" alt="The main production hall" fill sizes="(min-width:1024px) 18vw, 45vw" className="object-cover" />
+                    <Image src="/photos/factory/machine-hall.jpg" alt="Woodworking machinery on the PilihKayu production floor" fill sizes="(min-width:1024px) 18vw, 45vw" className="object-cover" />
                   </div>
                 </div>
               </Link>

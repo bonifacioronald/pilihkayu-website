@@ -126,9 +126,12 @@
 - Sections should flow, not stack: keep related sections on the same ground, separate them with
   a thin gold rule instead of a new background, and switch to paper only once per page.
 - Hero animation: text revealed word by word (rise with a slight settling tilt); the line drawing
-  is large (most of the hero height), clear of the text, sketched in by a soft sweep.
-- /catalogue: cover, download (Coming soon until the PDF is final), then How to order. No table
-  of contents.
+  is large (most of the hero height), faint (about 28 %), feathered on the text side so text and
+  art read as one scene, sketched in by a soft sweep.
+- /catalogue: one compact screen: cover, download (Coming soon until the PDF is final) and a
+  concise How to order list under the buttons. No table of contents, no separate section.
+- Planned for Phase 7: an interest form on /catalogue ("Tell me when the catalogue is live":
+  name, city, WhatsApp number) feeding the Leads Sheet. Do not forget it.
 - Anything not ready is shown greyed out, labelled "Coming soon", and cannot be tapped.
 - Video: Ronald edits the clips himself. Tell him the spec (orientation, length, no text) and
   use his file as delivered; do not cut clips out of the captioned reels. Compress for web only.
