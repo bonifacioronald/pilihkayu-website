@@ -121,7 +121,7 @@ export function VideoLoop({
       <button
         type="button"
         onClick={toggle}
-        className="absolute bottom-3 left-3 inline-flex min-h-11 items-center bg-espresso/85 px-4 text-[0.75rem] font-semibold tracking-[0.16em] text-paper uppercase transition-transform duration-ui ease-brand motion-safe:active:scale-[0.97]"
+        className="absolute bottom-2 left-2 inline-flex min-h-11 items-center bg-espresso/55 px-3 text-[0.6875rem] font-semibold tracking-[0.16em] text-paper/85 uppercase transition-[transform,color] duration-ui ease-brand motion-safe:active:scale-[0.97] [@media(hover:hover)]:hover:text-paper"
       >
         {playing ? "Pause" : "Play"}
       </button>

@@ -1,1 +1,53 @@
-{ "products": [] }
+{
+  "$comment": "Product data from the catalogue (p.6, p.12). Prices stay null until Ronald confirms the post-13-Nov start-from prices; the site then shows them. Never invent values.",
+  "flooring": {
+    "title": "The flooring series",
+    "pattern": "Standard pattern: random brick. Herringbone and chevron on request.",
+    "finishes": [
+      {
+        "id": "teak-natural-jumbo",
+        "name": "Teak Jumbo",
+        "finish": "Natural",
+        "construction": "Uni Joint",
+        "dimensions": ["Thickness: 15 mm", "Width: 120 mm", "Length: <1800 mm (random)"],
+        "finishing": "UV Oil",
+        "priceFrom": null,
+        "video": "/media/flooring/teak-natural-jumbo.mp4",
+        "poster": "/photos/flooring/teak-natural-jumbo-1.jpg",
+        "still": "/photos/flooring/teak-natural-jumbo-2.jpg"
+      },
+      {
+        "id": "teak-natural-brown",
+        "name": "Teak",
+        "finish": "Natural Brown",
+        "construction": "Uni Joint or FJL 2P/3P/4P/5P",
+        "dimensions": ["Thickness: 15 mm", "Width: 90/100/120/150 mm", "Length: <1800 mm (random)"],
+        "finishing": "UV Coating",
+        "priceFrom": null,
+        "video": "/media/flooring/teak-naturaloil.mp4",
+        "poster": "/photos/flooring/teak-naturaloil-1.jpg",
+        "still": "/photos/flooring/teak-naturaloil-2.jpg"
+      },
+      {
+        "id": "mahony-natural",
+        "name": "Mahony",
+        "finish": "Natural",
+        "construction": "Uni Joint",
+        "dimensions": ["Thickness: 15 mm", "Width: 90/120 mm", "Length: <1800 mm (random)"],
+        "finishing": "UV Oil",
+        "priceFrom": null,
+        "video": "/media/flooring/mahony.mp4",
+        "poster": "/photos/flooring/mahony-1.jpg",
+        "still": "/photos/flooring/mahony-2.jpg"
+      }
+    ]
+  },
+  "species": [
+    { "name": "Teak", "image": "/photos/species/teak.jpg" },
+    { "name": "Merbau", "image": "/photos/species/merbau.jpg" },
+    { "name": "Mahony", "image": "/photos/species/mahony.jpg" },
+    { "name": "Ulin", "image": "/photos/species/ulin.jpg" },
+    { "name": "Acacia", "image": "/photos/species/acacia.jpg" },
+    { "name": "Oak", "image": "/photos/species/oak.jpg" }
+  ]
+}

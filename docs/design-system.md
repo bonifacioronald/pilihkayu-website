@@ -200,6 +200,14 @@ Replaces the Projects section of `docs/spec.md`. Data: `content/projects.json`; 
 
 `components/home-hero.tsx`: the building perspective (catalogue p.9, `public/drawings/building-perspective.svg`, shown in gold through a CSS mask) beside the title. One entrance, once on load: title lines rise out of their line boxes (110 ms stagger), the drawing is unveiled left to right over 2.6 s with a slight settle, then the paragraph and actions fade up. Keyframes in `globals.css` (`hero-line`, `hero-unveil`, `hero-settle`, `hero-fade`); reduced motion shows the final frame.
 
+## 9c. Media budget (performance)
+
+- Hero: poster image paints first and is the page's main image; video starts only after the page has loaded. Never fade the hero image in with opacity (it delays the first paint); rise it with transform only.
+- Line art used as a mask: WebP with alpha, about 1100 px wide, under 60 KB.
+- Clips: 540×960 (portrait) or 720×900 (4:5), H.264, no audio unless needed, CRF 27–31, usually under 1 MB. Short clips loop forward then backward (ping-pong).
+- Flooring films load one at a time, only when chosen and on screen.
+- Photos: max 2000 px long side, JPEG q80, EXIF and GPS removed; originals stay in assets/.
+
 ## 10. Analytics
 
 `components/analytics.tsx` (mounted once in the root layout): Google Analytics 4 on the production site only (`NEXT_PUBLIC_GA_ID` in Vercel), plus Vercel Speed Insights. One click listener sends:

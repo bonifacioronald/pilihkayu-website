@@ -119,13 +119,25 @@
           "images": []
         }
       ],
-      "previewNote": "Renders stand in until project photos exist. When Semarang photos arrive, put real photos first in preview (visualisation: false) and move or remove the renders. Then remove this note.",
+      "previewNote": "Real photos from fitting and sampling (Nov 2026) lead; one render remains for flooring and panelling until those are photographed. At handover: replace the render and add finished photos, then remove this note.",
       "preview": [
         {
-          "src": "/photos/renders/semarang-yh-2026-stair-1.jpg",
-          "alt": "Visualisation of the floating solid teak staircase for the Semarang residence",
-          "visualisation": true,
-          "caption": "Staircase"
+          "src": "/photos/semarang/staircase-a.jpg",
+          "alt": "Solid teak stair treads being fitted on a concrete staircase in the Semarang residence",
+          "visualisation": false,
+          "caption": "Staircase · fitting"
+        },
+        {
+          "src": "/photos/semarang/stair-treads.jpg",
+          "alt": "Close-up of solid teak stair treads with a clean front edge",
+          "visualisation": false,
+          "caption": "Teak treads · sampling"
+        },
+        {
+          "src": "/photos/semarang/exterior-ceiling-frame.jpg",
+          "alt": "The Semarang residence under construction, with framing prepared for the exterior lumber ceiling",
+          "visualisation": false,
+          "caption": "Exterior ceiling · frame preparation"
         },
         {
           "src": "/photos/renders/semarang-yh-2026-office-1.jpg",

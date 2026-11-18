@@ -2,6 +2,7 @@ import Image from "next/image";
 import { SiteChrome } from "@/components/site-chrome";
 import { Button } from "@/components/ui/button";
 import { ClosingCta } from "@/components/ui/closing-cta";
+import { FlooringSeries } from "@/components/flooring-series";
 import { HomeHero } from "@/components/home-hero";
 import { VisualisationCaption } from "@/components/ui/image-frame";
 import { getCaseStudy } from "@/lib/projects";
@@ -18,6 +19,14 @@ const steps = [
   { title: "Agreement & payment", text: "Confirm scope, pricing and payment." },
   { title: "Final checks & production", text: "On-site trial fitting if needed, followed by full production with updates." },
   { title: "Delivery & handover", text: "Transport and installation coordination as agreed." },
+];
+
+/** Staggered placement for the project photos (4 / 8 / 12 columns). */
+const SCATTER = [
+  "col-span-4 md:col-span-4 lg:col-span-5",
+  "col-span-2 md:col-span-4 lg:col-span-3 lg:col-start-8 lg:mt-36",
+  "col-span-2 md:col-span-4 lg:col-span-4 lg:col-start-2 lg:-mt-10",
+  "col-span-4 md:col-span-4 lg:col-span-4 lg:col-start-8 lg:mt-24",
 ];
 
 export default function HomePage() {
@@ -40,11 +49,11 @@ export default function HomePage() {
             <Reveal className="col-span-4 md:col-span-4 lg:col-span-5">
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
-                  src="/photos/factory/sun-drying-yard.jpg"
-                  alt="Solid wood flooring boards laid out to dry in the PilihKayu factory yard"
+                  src="/photos/flooring/teak-natural-jumbo-1.jpg"
+                  alt="Teak Jumbo solid wood flooring sample, natural finish"
                   fill
                   sizes="(min-width:1024px) 38vw, (min-width:640px) 48vw, 100vw"
-                  className="object-cover object-[50%_88%]"
+                  className="object-cover"
                 />
               </div>
               <h3 className="t-content mt-6">Flooring, skirting &amp; ceilings</h3>
@@ -55,8 +64,8 @@ export default function HomePage() {
             <Reveal className="col-span-4 md:col-span-4 lg:col-span-5 lg:col-start-8 lg:mt-32" delay={120}>
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
-                  src="/photos/factory/workshop-table-finishing.jpg"
-                  alt="A craftsman finishing a solid wood table top in the PilihKayu workshop"
+                  src="/photos/semarang/staircase-b.jpg"
+                  alt="Solid teak stair treads fitted on a staircase in a residence in Semarang"
                   fill
                   sizes="(min-width:1024px) 38vw, (min-width:640px) 48vw, 100vw"
                   className="object-cover"
@@ -76,6 +85,13 @@ export default function HomePage() {
               Ask us on WhatsApp
             </Button>
           </div>
+        </Container>
+      </Section>
+
+      {/* The flooring series */}
+      <Section tone="espresso" aria-labelledby="flooring-title">
+        <Container>
+          <FlooringSeries />
         </Container>
       </Section>
 
@@ -112,7 +128,7 @@ export default function HomePage() {
       </Section>
 
       {/* Projects: in progress. Renders stand in until handover photos (content/projects.json). */}
-      <Section tone="espresso" aria-labelledby="projects-title">
+      <Section tone="paper" aria-labelledby="projects-title">
         <Container>
           <Grid className="gap-y-8">
             <div className="col-span-4 md:col-span-8 lg:col-span-7">
@@ -123,23 +139,15 @@ export default function HomePage() {
             </div>
             <div className="col-span-4 md:col-span-6 lg:col-span-4 lg:col-start-9 lg:self-end">
               <p className="t-body t-muted">
-                Ceilings, staircases, doors and frames, flooring and skirting for one residence, made in our factory and now
-                being installed. Photos follow at handover.
+                Ceilings, staircases, doors and frames, flooring and skirting for one residence, made in our factory. These
+                photos are from fitting and sampling; finished photos follow at handover.
               </p>
             </div>
           </Grid>
 
           <Grid className="mt-14 gap-y-12 lg:mt-20">
             {(semarang.preview ?? []).map((img, i) => (
-              <Reveal
-                key={img.src}
-                delay={i * 120}
-                className={
-                  i === 0
-                    ? "col-span-4 md:col-span-4 lg:col-span-5"
-                    : "col-span-4 md:col-span-4 lg:col-span-4 lg:col-start-8 lg:mt-40"
-                }
-              >
+              <Reveal key={img.src} delay={(i % 2) * 120} className={SCATTER[i % SCATTER.length]}>
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <Image src={img.src} alt={img.alt} fill sizes="(min-width:1024px) 36vw, (min-width:640px) 48vw, 100vw" className="object-cover" />
                   {img.visualisation ? <VisualisationCaption place="Semarang residence" /> : null}
