@@ -7,7 +7,7 @@ export function UniJointDiagram({ className }: { className?: string }) {
     <figure className={className}>
       <figcaption className="t-meta mb-3">Uni Joint construction</figcaption>
       <div className="flex items-stretch gap-2">
-        <LineDrawing viewBox="0 0 600 44" stroke={1.2} className="flex-1" title="Uni Joint board: single lengths joined end to end">
+        <LineDrawing viewBox="0 0 600 44" stroke={1.2} duration={2600} stagger={260} threshold={0.9} className="flex-1" title="Uni Joint board: single lengths joined end to end">
           <rect x={1} y={1} width={598} height={42} />
           <path d="M120 1 V43 M298 1 V43 M452 1 V43" />
         </LineDrawing>
@@ -24,7 +24,7 @@ export function FjlDiagram({ className }: { className?: string }) {
     <figure className={className}>
       <figcaption className="t-meta mb-3">FJL 2P construction</figcaption>
       <div className="flex items-stretch gap-2">
-        <LineDrawing viewBox="0 0 600 44" stroke={1.2} className="flex-1" title="FJL 2P board: two laminated strips with staggered finger joints">
+        <LineDrawing viewBox="0 0 600 44" stroke={1.2} duration={2600} stagger={260} threshold={0.9} className="flex-1" title="FJL 2P board: two laminated strips with staggered finger joints">
           <rect x={1} y={1} width={598} height={42} />
           <path d="M1 22 H599" />
           <path d="M90 1 V22 M250 1 V22 M410 1 V22 M540 1 V22" />

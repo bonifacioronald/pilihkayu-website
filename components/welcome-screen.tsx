@@ -35,9 +35,6 @@ const SOURCES: Record<string, string> = {
 const VIDEO = "/media/welcome-bg.mp4";
 const POSTER = "/media/welcome-bg-poster.jpg";
 
-const control =
-  "inline-flex min-h-11 items-center text-[0.6875rem] font-semibold tracking-[0.2em] uppercase text-paper/85 transition-colors duration-ui ease-brand [@media(hover:hover)]:hover:text-paper";
-
 /**
  * /welcome: the Instagram bio and QR landing, built like an app's opening screen.
  * One job: send the visitor to the right action.
@@ -56,7 +53,6 @@ export function WelcomeScreen() {
   const [sound, setSound] = useState(false);
   const [open, setOpen] = useState(false);
   const [role, setRole] = useState<Role | null>(null);
-  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const actions = data.actions as Action[];
   const roles = data.roles as Role[];
@@ -107,20 +103,6 @@ export function WelcomeScreen() {
     };
   }, [open]);
 
-  function togglePlay() {
-    const v = video.current;
-    if (!v) return;
-    if (!load) return setLoad(true);
-    if (v.paused)
-      v.play()
-        .then(() => setPlaying(true))
-        .catch(() => {});
-    else {
-      v.pause();
-      setPlaying(false);
-    }
-  }
-
   function toggleSound() {
     const v = video.current;
     if (!v) return;
@@ -146,14 +128,14 @@ export function WelcomeScreen() {
   const waMessage = (base?: string) =>
     `${base ?? "Halo PilihKayu"}${role?.waNote ? `. ${role.waNote}` : ""} (${source})`;
 
-  /** One small, quiet button; Sound and Pause live inside it. */
-  const controls = (className: string, menuClass: string) => (
+  /** One small, quiet sound toggle. The film always plays (muted until the visitor asks). */
+  const controls = (className: string) => (
     <div className={className}>
       <button
         type="button"
-        onClick={() => setSettingsOpen((o) => !o)}
-        aria-expanded={settingsOpen}
-        aria-label="Video and sound settings"
+        onClick={toggleSound}
+        aria-pressed={sound}
+        aria-label={sound ? "Turn sound off" : "Turn sound on"}
         className="inline-flex size-11 items-center justify-center text-paper/70 transition-colors duration-ui ease-brand [@media(hover:hover)]:hover:text-paper"
       >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-5" aria-hidden="true">
@@ -161,20 +143,6 @@ export function WelcomeScreen() {
           {sound ? <path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" /> : <path d="M16 10l4 4M20 10l-4 4" />}
         </svg>
       </button>
-      <div
-        className={cx(
-          "absolute z-30 w-44 bg-espresso shadow-[inset_0_0_0_1px_rgb(184_134_59/0.5)] transition-[opacity,transform,visibility] duration-200 ease-brand",
-          menuClass,
-          settingsOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0",
-        )}
-      >
-        <button type="button" onClick={toggleSound} aria-pressed={sound} tabIndex={settingsOpen ? 0 : -1} className={cx(control, "w-full justify-between px-4")}>
-          Sound <span className="text-gold">{sound ? "On" : "Off"}</span>
-        </button>
-        <button type="button" onClick={togglePlay} tabIndex={settingsOpen ? 0 : -1} className={cx(control, "w-full justify-between border-t border-gold/20 px-4")}>
-          Video <span className="text-gold">{playing ? "Pause" : "Play"}</span>
-        </button>
-      </div>
     </div>
   );
 
@@ -219,13 +187,13 @@ export function WelcomeScreen() {
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 hidden h-28 bg-[linear-gradient(to_top,rgb(43_26_18/0.7),transparent)] lg:block"
         />
-        {controls("absolute right-3 bottom-3 hidden lg:block", "right-0 bottom-12")}
+        {controls("absolute right-3 bottom-3 hidden lg:block")}
       </div>
 
       {/* Content */}
       <div className="flex min-h-dvh flex-1 flex-col">
         <header className="relative flex items-center justify-center px-5 pt-[max(0.5rem,env(safe-area-inset-top))] lg:justify-start lg:px-[clamp(3rem,6vw,7rem)] lg:pt-8">
-          {controls("absolute top-[max(0.5rem,env(safe-area-inset-top))] right-2 lg:hidden", "top-12 right-0")}
+          {controls("absolute top-[max(0.5rem,env(safe-area-inset-top))] right-2 lg:hidden")}
           <Logo className="relative" />
         </header>
 

@@ -15,6 +15,10 @@ type LineDrawingProps = {
   draw?: "in-view" | "none";
   /** Delay between strokes, ms. */
   stagger?: number;
+  /** Draw duration per stroke, ms (default: the 1200 ms token). */
+  duration?: number;
+  /** How much of the drawing must be on screen before it starts (0–1). */
+  threshold?: number;
   className?: string;
   /** SVG shapes. Every shape is a stroke unless it has data-fill. Drop exported SVG contents straight in. */
   children: React.ReactNode;
@@ -31,6 +35,8 @@ export function LineDrawing({
   stroke = 1,
   draw = "in-view",
   stagger = 30,
+  duration,
+  threshold = 0.25,
   className,
   children,
 }: LineDrawingProps) {
@@ -58,18 +64,18 @@ export function LineDrawing({
           io.disconnect();
         }
       },
-      { threshold: 0.25 },
+      { threshold },
     );
     io.observe(svg);
     return () => io.disconnect();
-  }, [draw, stagger]);
+  }, [draw, stagger, threshold]);
 
   return (
     <svg
       ref={ref}
       viewBox={viewBox}
       className={cx("line-art block h-auto w-full", className)}
-      style={{ "--stroke": stroke } as React.CSSProperties}
+      style={{ "--stroke": stroke, ...(duration ? { "--duration-draw": `${duration}ms` } : {}) } as React.CSSProperties}
       role={title ? "img" : undefined}
       aria-label={title}
       aria-hidden={title ? undefined : true}
