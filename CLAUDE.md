@@ -31,7 +31,7 @@
   caption box. Use the tokens and the section tones; never hard-code colours.
 - Primary button: paper fill with espresso text on dark (espresso fill on paper). Secondary: 1 px
   outline. Link: gold underline. One primary per screen.
-- Type: Fraunces 300, all caps, optical size 144, soft/wonky off, line 1.0–1.05 for titles; never
+- Type: Fraunces 300 on dark grounds and 400 on the paper ground (300 is too thin on paper), all caps, optical size 144, soft/wonky off, line 1.0–1.05 for titles; never
   bold, italic or sentence case. One tagline style: Fraunces lowercase in gold, rarely. Inter for
   body (never under 16 px on mobile), labels (600 caps, wide tracking) and spec pairs. Tabular numbers.
 - Layout: 12/8/4-column grid, generous margins. Titles off-axis (left or right), paragraph in an
@@ -119,6 +119,16 @@
 - About (/factory) stays focused: heritage, facility, Prepare/Build/Finish, standards. Furniture
   and wood species belong on Home (furniture under Projects).
 - Before reporting "done", check every image and video actually loads (no blank frames).
+- Home flow: hero → what we make → projects (high up, two future case studies side by side,
+  scattered pairs of larger photos) → flooring series + wood species (one material story on one
+  ground, species in half the width) → direct from our factory (video + photos, leads to About)
+  → closing CTA. "How to order" lives on /catalogue (and later /how-we-work), not on Home.
+- Sections should flow, not stack: keep related sections on the same ground, separate them with
+  a thin gold rule instead of a new background, and switch to paper only once per page.
+- Hero animation: text revealed word by word (rise with a slight settling tilt); the line drawing
+  is large (most of the hero height), clear of the text, sketched in by a soft sweep.
+- /catalogue: cover, download (Coming soon until the PDF is final), then How to order. No table
+  of contents.
 - Anything not ready is shown greyed out, labelled "Coming soon", and cannot be tapped.
 - Video: Ronald edits the clips himself. Tell him the spec (orientation, length, no text) and
   use his file as delivered; do not cut clips out of the captioned reels. Compress for web only.

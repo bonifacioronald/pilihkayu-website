@@ -2,26 +2,25 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { SiteChrome } from "@/components/site-chrome";
 import { Button } from "@/components/ui/button";
+import { ClosingCta } from "@/components/ui/closing-cta";
+import { NumberedSteps } from "@/components/ui/numbered-steps";
 import { Container, Grid, Section } from "@/components/ui/section";
+import { TitleBlock } from "@/components/ui/title-block";
 import { settings, whatsappUrl } from "@/lib/settings";
 
 export const metadata: Metadata = {
   title: "Catalogue · PilihKayu",
   description:
-    "The PilihKayu catalogue: solid wood flooring, skirting and ceilings, custom-made doors, frames, staircases and furniture, wood species and how to order.",
+    "The PilihKayu catalogue: solid wood flooring, skirting and ceilings, custom-made doors, frames, staircases and furniture, and how to order.",
   alternates: { canonical: "/catalogue" },
 };
 
-const contents = [
-  { title: "About us", page: 3 },
-  { title: "Project support", page: 4 },
-  { title: "Solid wood flooring, skirting & ceilings series", page: 5 },
-  { title: "Flooring T&G · Skirting · Ceiling", page: 6, sub: true },
-  { title: "The custom-made collection", page: 9 },
-  { title: "Doors & frames · Staircases · Furniture", page: 10, sub: true },
-  { title: "Wood species we work with", page: 12 },
-  { title: "How to order", page: 12 },
-  { title: "Contacts", page: 14 },
+const steps = [
+  { title: "Submit your drawings", text: "Share your plans and requirements." },
+  { title: "Consult & refine", text: "Expert advice, feasibility review and material samples if needed." },
+  { title: "Agreement & payment", text: "Confirm scope, pricing and payment." },
+  { title: "Final checks & production", text: "On-site trial fitting if needed, followed by full production with updates." },
+  { title: "Delivery & handover", text: "Transport and installation coordination as agreed." },
 ];
 
 /** Catalogue: the cover, what is inside, and the download (coming soon until the PDF is final). */
@@ -68,22 +67,21 @@ export default function CataloguePage() {
                 ) : null}
               </div>
 
-              <h2 className="t-label mt-14 mb-2">Inside</h2>
-              <ol className="tabular border-t border-[var(--rule)]/60">
-                {contents.map((c) => (
-                  <li
-                    key={c.title}
-                    className={`flex items-baseline justify-between gap-6 border-b border-[var(--rule)]/40 py-3 ${c.sub ? "pl-5 text-[var(--muted)]" : ""}`}
-                  >
-                    <span className={c.sub ? "text-[0.9375rem]" : "text-base"}>{c.title}</span>
-                    <span className="t-meta">p.{c.page}</span>
-                  </li>
-                ))}
-              </ol>
             </div>
           </Grid>
         </Container>
       </Section>
+
+      <Section tone="espresso" texture="grid" aria-labelledby="order-title">
+        <Container>
+          <TitleBlock id="order-title" title="How to order" align="right">
+            <p>Every step crafted to fit your space. We keep you informed from approval through production and delivery.</p>
+          </TitleBlock>
+          <NumberedSteps className="mt-16 lg:mt-24" steps={steps} />
+        </Container>
+      </Section>
+
+      <ClosingCta id="contact" />
     </SiteChrome>
   );
 }

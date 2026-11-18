@@ -149,6 +149,10 @@ button {
 }
 
 /* ---------- Type scale ---------- */
+/* Light Fraunces reads too thin on the paper ground: titles there use the regular cut. */
+.tone-paper :is(.t-display, .t-title, .t-content) {
+  font-weight: 400;
+}
 @layer components {
   .t-display,
   .t-title,
@@ -383,14 +387,16 @@ button {
 }
 
 /* ---------- Hero entrance (home): one orchestrated moment, plays once on load ----------
-   Title lines rise out of their own line boxes; the line drawing is unveiled left to right as if
-   being drawn; the paragraph and actions follow. Transform and opacity only. */
-@keyframes hero-line {
+   Text: each word rises out of its own line box with a slight tilt that settles, staggered.
+   Drawing: revealed by a soft diagonal sweep, as if sketched across the paper. */
+@keyframes hero-word {
   from {
-    transform: translateY(105%);
+    transform: translate3d(0, 110%, 0) rotate(5deg);
+    opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: none;
+    opacity: 1;
   }
 }
 @keyframes hero-fade {
@@ -403,65 +409,57 @@ button {
     transform: translateY(0);
   }
 }
-@keyframes hero-unveil {
+@keyframes hero-sketch {
   from {
-    transform: translateX(0);
+    -webkit-mask-position: center, 100% 0;
+    mask-position: center, 100% 0;
+    opacity: 0.2;
   }
   to {
-    transform: translateX(101%);
-  }
-}
-@keyframes hero-settle {
-  from {
-    opacity: 0;
-    transform: scale(1.04);
-  }
-  to {
+    -webkit-mask-position: center, 0 0;
+    mask-position: center, 0 0;
     opacity: 1;
-    transform: scale(1);
   }
 }
 .hero-line {
   display: block;
-  overflow: hidden;
-  padding-bottom: 0.04em;
 }
-.hero-line > span {
-  display: block;
-  animation: hero-line 1100ms var(--ease-brand) both;
-  animation-delay: calc(150ms + var(--i, 0) * 110ms);
+.hero-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.06em;
+  margin-bottom: -0.06em;
+}
+.hero-word > span {
+  display: inline-block;
+  transform-origin: 0 100%;
+  animation: hero-word 1000ms var(--ease-brand) both;
+  animation-delay: calc(120ms + var(--w, 0) * 70ms);
 }
 .hero-fade {
   animation: hero-fade 900ms var(--ease-brand) both;
   animation-delay: var(--d, 700ms);
 }
-.hero-drawing {
-  animation: hero-settle 2400ms var(--ease-brand) both;
-}
-/* The film frame is visible from the first paint (so it counts as the page's main image at once);
-   it only rises into place, transform only. */
-@keyframes hero-rise {
-  from {
-    transform: translateY(28px) scale(0.98);
-  }
-  to {
-    transform: none;
-  }
-}
-.hero-rise {
-  animation: hero-rise 1400ms var(--ease-brand) 300ms both;
-}
-.hero-unveil {
-  animation: hero-unveil 2600ms cubic-bezier(0.77, 0, 0.175, 1) 250ms both;
+/* The drawing is masked twice: by its own line art, and by a wide soft gradient that slides
+   across, so the lines appear progressively with a feathered edge. */
+.hero-sketch {
+  -webkit-mask-image: var(--art), linear-gradient(105deg, #000 40%, transparent 60%);
+  mask-image: var(--art), linear-gradient(105deg, #000 40%, transparent 60%);
+  -webkit-mask-size: contain, 300% 100%;
+  mask-size: contain, 300% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center, 0 0;
+  mask-position: center, 0 0;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  animation: hero-sketch 2800ms cubic-bezier(0.65, 0, 0.35, 1) 300ms both;
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-line > span,
+  .hero-word > span,
   .hero-fade,
-  .hero-rise,
-  .hero-drawing {
+  .hero-sketch {
     animation: none;
-  }
-  .hero-unveil {
-    display: none;
   }
 }
