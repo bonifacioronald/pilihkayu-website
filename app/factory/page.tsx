@@ -6,7 +6,7 @@ import { ClosingCta } from "@/components/ui/closing-cta";
 import { Reveal } from "@/components/ui/reveal";
 import { Container, Grid, Section } from "@/components/ui/section";
 import { TitleBlock } from "@/components/ui/title-block";
-import { VideoLoop } from "@/components/ui/video-loop";
+import { VideoCard } from "@/components/ui/video-card";
 
 export const metadata: Metadata = {
   title: "About our factory · PilihKayu",
@@ -75,7 +75,7 @@ export default function FactoryPage() {
               priority
               quality={65}
               sizes="(min-width:1024px) 83vw, 100vw"
-              className="object-cover"
+              className="object-cover object-[0%_60%]"
             />
           </div>
         </div>
@@ -107,17 +107,18 @@ export default function FactoryPage() {
       <Section tone="espresso" texture="grain" aria-labelledby="process-title">
         <Container>
           <TitleBlock id="process-title" title="Prepare, build, finish">
-            <p>Every piece passes through our own production floor, from raw timber to packed and loaded.</p>
+            <p>Every piece passes through our own production floor, from raw timber to packed and loaded. Tap a film to play it.</p>
           </TitleBlock>
         </Container>
-        <ol className="mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[var(--outer)] pb-2 [scrollbar-width:none] lg:mt-20 lg:grid lg:grid-cols-3 lg:gap-[var(--gutter)] lg:overflow-visible">
+        <ol className="mt-14 flex snap-x snap-mandatory scroll-px-[var(--outer)] gap-4 overflow-x-auto px-[var(--outer)] pb-2 [scrollbar-width:none] lg:mt-20 lg:grid lg:grid-cols-3 lg:gap-[var(--gutter)] lg:overflow-visible">
           {stages.map((s, i) => (
             <li key={s.id} className="w-[72%] shrink-0 snap-start md:w-[42%] lg:w-auto">
-              <VideoLoop
+              <VideoCard
+                id={`reel-${s.id}`}
                 src={s.src}
                 poster={s.poster}
                 alt={`${s.name}: footage from the PilihKayu production floor`}
-                sizes="(min-width:1024px) 28vw, 72vw"
+                label={`Play: ${s.name}`}
               />
               <p className="t-label tabular mt-5">{String(i + 1).padStart(2, "0")}</p>
               <h3 className="sr-only">{s.name}</h3>

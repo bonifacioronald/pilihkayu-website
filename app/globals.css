@@ -411,14 +411,11 @@ button {
 }
 @keyframes hero-sketch {
   from {
-    -webkit-mask-position: center, 100% 0;
-    mask-position: center, 100% 0;
-    opacity: 0.2;
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
   }
   to {
-    -webkit-mask-position: center, 0 0;
-    mask-position: center, 0 0;
-    opacity: 1;
+    clip-path: inset(0 0 0 0);
   }
 }
 .hero-line {
@@ -441,20 +438,9 @@ button {
   animation: hero-fade 900ms var(--ease-brand) both;
   animation-delay: var(--d, 700ms);
 }
-/* The drawing is masked twice: by its own line art, and by a wide soft gradient that slides
-   across, so the lines appear progressively with a feathered edge. */
+/* The drawing is revealed left to right, as if being drawn across the page. */
 .hero-sketch {
-  -webkit-mask-image: var(--art), linear-gradient(105deg, #000 40%, transparent 60%);
-  mask-image: var(--art), linear-gradient(105deg, #000 40%, transparent 60%);
-  -webkit-mask-size: contain, 300% 100%;
-  mask-size: contain, 300% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center, 0 0;
-  mask-position: center, 0 0;
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
-  animation: hero-sketch 2800ms cubic-bezier(0.65, 0, 0.35, 1) 300ms both;
+  animation: hero-sketch 2400ms cubic-bezier(0.65, 0, 0.35, 1) 300ms both;
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-word > span,

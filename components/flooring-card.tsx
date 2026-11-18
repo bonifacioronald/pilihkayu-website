@@ -74,6 +74,7 @@ export function FlooringCard({ id, name, finish, still, video, href, specs, size
           alt={`${name} solid wood flooring, ${finish} finish`}
           fill
           sizes={sizes ?? "(min-width:1024px) 30vw, 78vw"}
+          loading="eager"
           className="object-cover transition-transform duration-[1200ms] ease-brand [@media(hover:hover)]:group-hover:scale-[1.03]"
         />
         {load ? (

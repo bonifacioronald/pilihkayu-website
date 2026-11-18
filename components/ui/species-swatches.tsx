@@ -12,7 +12,7 @@ export function SpeciesSwatches({ species, className }: { species: Species[]; cl
   return (
     <ul
       className={cx(
-        "-mx-[var(--outer)] flex snap-x snap-mandatory gap-3 overflow-x-auto px-[var(--outer)] pb-2 [scrollbar-width:none] lg:mx-0 lg:grid lg:snap-none lg:gap-[var(--gutter)] lg:overflow-visible lg:px-0",
+        "-mx-[var(--outer)] flex snap-x snap-mandatory scroll-px-[var(--outer)] gap-3 overflow-x-auto px-[var(--outer)] pb-2 [scrollbar-width:none] lg:mx-0 lg:grid lg:snap-none lg:gap-[var(--gutter)] lg:overflow-visible lg:px-0",
         className,
       )}
       style={{ gridTemplateColumns: `repeat(${species.length}, minmax(0, 1fr))` }}

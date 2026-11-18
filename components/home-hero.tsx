@@ -6,25 +6,28 @@ const LINES = ["Solid wood,", "made to your", "drawings"];
 /**
  * Home hero. The title is set word by word: each word rises out of its own line with a slight
  * tilt that settles. The interior line drawing fills most of the section height on the right,
- * bleeding off the edge, and is sketched in by a soft sweep. The drawing stays clear of the
+ * bleeding off the edge, and is drawn in left to right. The drawing stays clear of the
  * text; the section is a little shorter than the screen so the next section peeks in.
  */
 export function HomeHero() {
   let w = 0;
   return (
     <section aria-labelledby="hero-title" className="tone-espresso texture-grain relative overflow-hidden">
-      {/* Drawing */}
+      {/* Drawing: one ready-made image (colour gradient and feathered edges baked in), so it
+          blends into the background on every phone without CSS masks. */}
       <div
         aria-hidden="true"
-        className="relative h-[46vh] max-h-[26rem] lg:absolute lg:inset-y-[4%] lg:right-[-6%] lg:left-[34%] lg:h-auto lg:max-h-none"
+        className="relative h-[38vh] max-h-[22rem] lg:absolute lg:inset-y-[4%] lg:right-[-6%] lg:left-[34%] lg:h-auto lg:max-h-none"
       >
-        {/* Feathered on the text side (and softly at the foot), so drawing and words read as one scene. */}
-        <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,#000_70%,transparent),linear-gradient(to_right,transparent,#000_45%)] [mask-composite:intersect] [-webkit-mask-composite:source-in] lg:[mask-image:linear-gradient(to_bottom,#000_78%,transparent),linear-gradient(to_right,transparent_2%,#000_42%)]">
-          <div
-            className="hero-sketch absolute inset-0 bg-[linear-gradient(to_right,var(--color-paper)_15%,var(--color-gold)_75%)] opacity-[0.3]"
-            style={{ "--art": "url(/drawings/interior-living.webp)" } as React.CSSProperties}
-          />
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/drawings/interior-living-hero.webp"
+          alt=""
+          width={1100}
+          height={802}
+          decoding="async"
+          className="hero-sketch absolute inset-0 h-full w-full object-contain opacity-[0.45] lg:opacity-[0.32]"
+        />
       </div>
 
       <div className="container-page relative lg:flex lg:min-h-[calc(100dvh-var(--header-h)-5rem)] lg:items-center">
