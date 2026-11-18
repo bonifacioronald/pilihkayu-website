@@ -157,7 +157,7 @@ Three kinds of image, each with a job:
 | Kind | Job | Rule |
 | --- | --- | --- |
 | Line illustrations | Brand language; construction know-how | `<LineDrawing>`; gold on dark, neutral on paper |
-| Renders | Aspiration | Always the Visualisation caption box; real catalogue products and species only; never presented as a finished project |
+| Renders | Aspiration | Never the hero. Quiet label on the image ("Visualisation · Semarang residence", `VisualisationCaption` default); the terracotta box variant is for print-style layouts only. Real catalogue products and species only; replaced by project photos when they exist |
 | Real photos and footage | Proof | Near every claim ("we make", "since 1995"); shown only at sizes their quality supports |
 
 - Use only PilihKayu's own photos or labelled renders. No stock photos. The catalogue's door and staircase images (p.10, p.11) are royalty-free illustrations and cannot be used on the site.
@@ -195,6 +195,10 @@ Replaces the Projects section of `docs/spec.md`. Data: `content/projects.json`; 
 **Case study 1** (`/projects/residential-semarang-yh-2026`): large caps title with a meta column (location, year, status "Installation in progress", scope, species); sticky section index (column on desktop, sideways strip on phones); one section per product with images, annotated detail callouts, spec block, short paragraph, Visualisation captions where relevant. Arriving from a grid item scrolls to the section and briefly highlights it. Sections: interior ceiling, exterior ceiling, staircase 1, staircase 2, main door, interior doors, office flooring, bathroom flooring, skirting.
 
 **Case study 2** (`/projects/furniture-heritage`): one page with the slideshow walking timber → workshop → finished pieces. Selected pieces appear as grid items that open the page at their slide. No page per piece.
+
+## 9b. Home hero
+
+`components/home-hero.tsx`: the building perspective (catalogue p.9, `public/drawings/building-perspective.svg`, shown in gold through a CSS mask) beside the title. One entrance, once on load: title lines rise out of their line boxes (110 ms stagger), the drawing is unveiled left to right over 2.6 s with a slight settle, then the paragraph and actions fade up. Keyframes in `globals.css` (`hero-line`, `hero-unveil`, `hero-settle`, `hero-fade`); reduced motion shows the final frame.
 
 ## 10. Analytics
 

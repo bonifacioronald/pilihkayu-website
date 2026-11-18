@@ -35,7 +35,7 @@ switches to /welcome?utm_source=instagram.
 | v1.1 | 4 | /flooring, /ceilings, /custom | Final prices (13 Nov meeting), reshot samples, product photos, renders |
 | v1.2 | 5 | /projects + Semarang and Furniture heritage case studies | Mr. YH's permission, project photos per section, furniture photos and heritage facts |
 | v1.3 | 6 | /how-we-work, /for-architects, /for-contractors, /for-owners (the three role choices on /welcome switch on here) | Payment terms, delivery areas, FAQ answers, samples and partner terms |
-| v1.4 | 7 | /catalogue + lead form → Google Sheet + email + WhatsApp | Final catalogue PDF, Leads Sheet script URL |
+| v1.4 | 7 | /catalogue download + interest form ("tell me when the catalogue is live": name, city, WhatsApp) → Google Sheet + email + WhatsApp. The /catalogue page itself ships in v1 with download Coming soon | Final catalogue PDF, Leads Sheet script URL |
 | v1.5 | 8 | Popup banner, full QA, Search Console | Founding-client offer wording (optional) |
 
 Later features (quote basket, flooring estimator, wood library, CMS…) stay in docs/spec.md,

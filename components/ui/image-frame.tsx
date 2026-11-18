@@ -62,7 +62,6 @@ export function ImageFrame({
         <VisualisationCaption
           place={visualisation.place}
           lead={visualisation.lead}
-          edge={placement === "bleed-right" ? "left" : placement === "bleed-left" ? "left-bleed" : "left"}
         />
       ) : null}
       {caption ? (
@@ -81,29 +80,42 @@ export function ImageFrame({
 }
 
 /**
- * Terracotta caption box for renders (catalogue p.8, p.13). Deep terracotta keeps
- * paper text at 5.23:1. Every render on the site carries one.
+ * Label for renders. Quiet by default: a small line under or on the image, so a render never
+ * shouts. Every render on the site carries one. Replace renders with project photos when they exist.
+ * "box" is the catalogue's terracotta box, kept for print-like layouts only.
  */
 export function VisualisationCaption({
   place,
-  lead = "A visualisation of an ongoing PilihKayu project in:",
-  edge = "left",
+  lead = "Visualisation",
+  variant = "quiet",
   className,
 }: {
   place: string;
   lead?: string;
+  variant?: "quiet" | "box";
   edge?: "left" | "left-bleed";
   className?: string;
 }) {
+  if (variant === "box") {
+    return (
+      <p
+        className={cx(
+          "absolute bottom-6 left-0 z-10 max-w-[18rem] bg-terracotta-deep py-3 pr-5 pl-4 text-[0.875rem] leading-snug text-paper lg:bottom-10 lg:pl-6",
+          className,
+        )}
+      >
+        A visualisation of an ongoing PilihKayu project in: <strong className="block font-semibold">{place}</strong>
+      </p>
+    );
+  }
   return (
     <p
       className={cx(
-        "absolute bottom-6 z-10 max-w-[18rem] bg-terracotta-deep py-3 pr-5 text-[0.875rem] leading-snug text-paper lg:bottom-10 lg:max-w-[20rem] lg:py-4 lg:text-[0.9375rem]",
-        edge === "left-bleed" ? "left-0 pl-[var(--outer)]" : "left-0 pl-4 lg:pl-6",
+        "absolute right-3 bottom-3 z-10 bg-espresso/70 px-2.5 py-1 text-[0.6875rem] font-medium tracking-[0.06em] text-paper/90",
         className,
       )}
     >
-      {lead} <strong className="block font-semibold">{place}</strong>
+      {lead} · {place}
     </p>
   );
 }

@@ -2,7 +2,9 @@ import Image from "next/image";
 import { SiteChrome } from "@/components/site-chrome";
 import { Button } from "@/components/ui/button";
 import { ClosingCta } from "@/components/ui/closing-cta";
+import { HomeHero } from "@/components/home-hero";
 import { VisualisationCaption } from "@/components/ui/image-frame";
+import { getCaseStudy } from "@/lib/projects";
 import { NumberedSteps } from "@/components/ui/numbered-steps";
 import { Reveal } from "@/components/ui/reveal";
 import { Container, Grid, Section } from "@/components/ui/section";
@@ -19,49 +21,10 @@ const steps = [
 ];
 
 export default function HomePage() {
+  const semarang = getCaseStudy("residential-semarang-yh-2026")!;
   return (
     <SiteChrome>
-      {/* Hero. Phone: the render fills the top and dissolves into espresso under the title.
-          Desktop: text left, the render as a tall panel on the right. */}
-      <Section tone="espresso" spacing="none" aria-labelledby="hero-title" className="relative">
-        <div className="lg:grid lg:min-h-[calc(100dvh-var(--header-h))] lg:grid-cols-12">
-          <div className="relative lg:order-2 lg:col-span-5 lg:col-start-8">
-            <div className="relative aspect-[4/5] w-full lg:absolute lg:inset-0 lg:aspect-auto">
-              <Image
-                src="/photos/renders/semarang-yh-2026-office-1.jpg"
-                alt="Visualisation of a living room with solid wood flooring and wall panelling, for a PilihKayu project in Semarang"
-                fill
-                priority
-                quality={65}
-                sizes="(min-width:1024px) 42vw, 100vw"
-                className="object-cover"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_45%,rgb(43_26_18/0.85)_80%,#2b1a12_100%)] lg:hidden"
-              />
-              <VisualisationCaption place="Semarang, Indonesia" className="!top-6 !bottom-auto lg:!top-auto lg:!bottom-10" />
-            </div>
-          </div>
-          <div className="container-page relative -mt-28 pb-20 lg:order-1 lg:col-span-7 lg:mt-0 lg:flex lg:flex-col lg:justify-center lg:py-24 lg:pr-12">
-            <h1 id="hero-title" className="t-display max-w-[11ch]">
-              Solid wood, made to your drawings
-            </h1>
-            <p className="t-body mt-5 max-w-[40ch] text-paper/85 lg:mt-7">
-              Flooring, ceilings, doors, staircases and furniture in solid wood. Direct from our factory in Indonesia, since
-              1995.
-            </p>
-            <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4 lg:mt-11">
-              <Button href={whatsappUrl("Halo PilihKayu, saya ingin konsultasi proyek (dari website)")} external>
-                Discuss your project
-              </Button>
-              <Button variant="link" href="/factory">
-                About our factory
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Section>
+      <HomeHero />
 
       {/* What we make: two families, one next step. */}
       <Section tone="paper" aria-labelledby="make-title">
@@ -92,13 +55,12 @@ export default function HomePage() {
             <Reveal className="col-span-4 md:col-span-4 lg:col-span-5 lg:col-start-8 lg:mt-32" delay={120}>
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
-                  src="/photos/renders/semarang-yh-2026-stair-1.jpg"
-                  alt="Visualisation of a floating solid teak staircase, for a PilihKayu project in Semarang"
+                  src="/photos/factory/workshop-table-finishing.jpg"
+                  alt="A craftsman finishing a solid wood table top in the PilihKayu workshop"
                   fill
                   sizes="(min-width:1024px) 38vw, (min-width:640px) 48vw, 100vw"
                   className="object-cover"
                 />
-                <VisualisationCaption place="Semarang, Indonesia" />
               </div>
               <h3 className="t-content mt-6">Doors, staircases &amp; furniture</h3>
               <p className="t-body t-muted mt-3 max-w-[44ch]">
@@ -146,6 +108,68 @@ export default function HomePage() {
               />
             </Reveal>
           </Grid>
+        </Container>
+      </Section>
+
+      {/* Projects: in progress. Renders stand in until handover photos (content/projects.json). */}
+      <Section tone="espresso" aria-labelledby="projects-title">
+        <Container>
+          <Grid className="gap-y-8">
+            <div className="col-span-4 md:col-span-8 lg:col-span-7">
+              <p className="t-label mb-4">Projects · In progress</p>
+              <h2 id="projects-title" className="t-title">
+                A full house in {semarang.location}
+              </h2>
+            </div>
+            <div className="col-span-4 md:col-span-6 lg:col-span-4 lg:col-start-9 lg:self-end">
+              <p className="t-body t-muted">
+                Ceilings, staircases, doors and frames, flooring and skirting for one residence, made in our factory and now
+                being installed. Photos follow at handover.
+              </p>
+            </div>
+          </Grid>
+
+          <Grid className="mt-14 gap-y-12 lg:mt-20">
+            {(semarang.preview ?? []).map((img, i) => (
+              <Reveal
+                key={img.src}
+                delay={i * 120}
+                className={
+                  i === 0
+                    ? "col-span-4 md:col-span-4 lg:col-span-5"
+                    : "col-span-4 md:col-span-4 lg:col-span-4 lg:col-start-8 lg:mt-40"
+                }
+              >
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <Image src={img.src} alt={img.alt} fill sizes="(min-width:1024px) 36vw, (min-width:640px) 48vw, 100vw" className="object-cover" />
+                  {img.visualisation ? <VisualisationCaption place="Semarang residence" /> : null}
+                </div>
+                {img.caption ? <p className="t-meta mt-3">{img.caption}</p> : null}
+              </Reveal>
+            ))}
+          </Grid>
+
+          <div className="mt-14 flex flex-col items-start gap-x-10 gap-y-5 border-t border-gold/30 pt-8 lg:mt-20 lg:flex-row lg:items-center">
+            <dl className="tabular flex flex-wrap gap-x-10 gap-y-3 text-[0.9375rem]">
+              <div>
+                <dt className="t-meta">Location</dt>
+                <dd>{semarang.location}</dd>
+              </div>
+              <div>
+                <dt className="t-meta">Year</dt>
+                <dd>{semarang.year}</dd>
+              </div>
+              <div>
+                <dt className="t-meta">Status</dt>
+                <dd>{semarang.status}</dd>
+              </div>
+            </dl>
+            <div className="lg:ml-auto">
+              <Button comingSoon variant="link">
+                Full project
+              </Button>
+            </div>
+          </div>
         </Container>
       </Section>
 

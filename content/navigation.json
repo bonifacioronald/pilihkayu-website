@@ -1,9 +1,25 @@
 {
   "$comment": "Main menu and footer pages. Add a page here the day it ships; never list a page that does not exist.",
   "items": [
-    { "label": "Home", "href": "/" },
-    { "label": "About", "href": "/factory" },
-    { "label": "Welcome", "href": "/welcome" }
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "About",
+      "href": "/factory"
+    },
+    {
+      "label": "Catalogue",
+      "href": "/catalogue"
+    },
+    {
+      "label": "Welcome",
+      "href": "/welcome"
+    }
   ],
-  "cta": { "label": "Contact us", "message": "Halo PilihKayu, saya ingin konsultasi proyek (dari website)" }
+  "cta": {
+    "label": "Contact us",
+    "message": "Halo PilihKayu, saya ingin konsultasi proyek (dari website)"
+  }
 }

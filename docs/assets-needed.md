@@ -87,7 +87,9 @@ Used on Home (credibility strip), /factory and /welcome.
 
 ## 4. Projects (folders `assets/projects/…`)
 
-### Case study 1: Residential, Semarang, Mr. YH, 2026 (`assets/projects/residential-semarang-yh-2026/`)
+### Case study 1: Residential, Semarang, Mr. YH, 2026
+
+> **When Semarang photos arrive:** replace the two renders in the Home "Projects · In progress" teaser (content/projects.json → preview) with real photos first; keep at most one render, labelled. (`assets/projects/residential-semarang-yh-2026/`)
 - [ ] **P1 Mr. YH's permission** to show the project (initials only, no address)
 - [ ] **P1 Full-resolution Semarang visualisations** (the catalogue p.8 living room and p.13 staircase renders, plus any others)
 - [ ] Photos per section. For each one: 1 wide shot + 2–3 detail shots (details get labelled callouts on the page). Progress photos now, finished photos at handover.

@@ -99,6 +99,15 @@
 - Small headings and questions are plain Inter. Fraunces caps are for real titles only, never
   for small text.
 - Prefer one interactive control over a stack of "Coming soon" buttons.
+- Renders must never be the bold hero: they reduce credibility. Lead with line illustrations
+  (brand) and real factory photos (proof). Renders sit in the "Projects · In progress" teaser,
+  labelled quietly ("Visualisation · Semarang residence"), never with a big terracotta box.
+  Frame unfinished projects honestly and positively (in progress, photos at handover), never
+  as missing. Replace renders with real photos as soon as they arrive (content/projects.json,
+  previewNote).
+- He likes the scattered (staggered, offset) image layout and a hero with a luxury entrance
+  animation; avoid flat, static, centred-template sections.
+- Low-priority controls (video sound, pause) are collapsed into one small, quiet button.
 - Anything not ready is shown greyed out, labelled "Coming soon", and cannot be tapped.
 - Video: Ronald edits the clips himself. Tell him the spec (orientation, length, no text) and
   use his file as delivered; do not cut clips out of the captioned reels. Compress for web only.

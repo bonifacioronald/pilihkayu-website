@@ -48,6 +48,9 @@ export type CaseStudy = {
   species: string[];
   sections?: CaseStudySection[];
   slides?: Slide[];
+  /** Images shown before the case study page exists (home teaser). Renders first, photos later. */
+  preview?: Array<ImageRef & { caption?: string }>;
+  previewNote?: string;
 };
 
 export type ProjectItem = {

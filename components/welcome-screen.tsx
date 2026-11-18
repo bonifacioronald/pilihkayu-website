@@ -56,6 +56,7 @@ export function WelcomeScreen() {
   const [sound, setSound] = useState(false);
   const [open, setOpen] = useState(false);
   const [role, setRole] = useState<Role | null>(null);
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const actions = data.actions as Action[];
   const roles = data.roles as Role[];
@@ -145,19 +146,35 @@ export function WelcomeScreen() {
   const waMessage = (base?: string) =>
     `${base ?? "Halo PilihKayu"}${role?.waNote ? `. ${role.waNote}` : ""} (${source})`;
 
-  const controls = (className: string) => (
+  /** One small, quiet button; Sound and Pause live inside it. */
+  const controls = (className: string, menuClass: string) => (
     <div className={className}>
-      <button type="button" onClick={togglePlay} className={control}>
-        {playing ? "Pause" : "Play"}
-      </button>
       <button
         type="button"
-        onClick={toggleSound}
-        aria-pressed={sound}
-        className={control}
+        onClick={() => setSettingsOpen((o) => !o)}
+        aria-expanded={settingsOpen}
+        aria-label="Video and sound settings"
+        className="inline-flex size-11 items-center justify-center text-paper/70 transition-colors duration-ui ease-brand [@media(hover:hover)]:hover:text-paper"
       >
-        {sound ? "Sound on" : "Sound off"}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="size-5" aria-hidden="true">
+          <path d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" />
+          {sound ? <path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" /> : <path d="M16 10l4 4M20 10l-4 4" />}
+        </svg>
       </button>
+      <div
+        className={cx(
+          "absolute z-30 w-44 bg-espresso shadow-[inset_0_0_0_1px_rgb(184_134_59/0.5)] transition-[opacity,transform,visibility] duration-200 ease-brand",
+          menuClass,
+          settingsOpen ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0",
+        )}
+      >
+        <button type="button" onClick={toggleSound} aria-pressed={sound} tabIndex={settingsOpen ? 0 : -1} className={cx(control, "w-full justify-between px-4")}>
+          Sound <span className="text-gold">{sound ? "On" : "Off"}</span>
+        </button>
+        <button type="button" onClick={togglePlay} tabIndex={settingsOpen ? 0 : -1} className={cx(control, "w-full justify-between border-t border-gold/20 px-4")}>
+          Video <span className="text-gold">{playing ? "Pause" : "Play"}</span>
+        </button>
+      </div>
     </div>
   );
 
@@ -202,17 +219,13 @@ export function WelcomeScreen() {
           aria-hidden="true"
           className="absolute inset-x-0 bottom-0 hidden h-28 bg-[linear-gradient(to_top,rgb(43_26_18/0.7),transparent)] lg:block"
         />
-        {controls(
-          "absolute inset-x-6 bottom-3 hidden items-center justify-between lg:flex",
-        )}
+        {controls("absolute right-3 bottom-3 hidden lg:block", "right-0 bottom-12")}
       </div>
 
       {/* Content */}
       <div className="flex min-h-dvh flex-1 flex-col">
         <header className="relative flex items-center justify-center px-5 pt-[max(0.5rem,env(safe-area-inset-top))] lg:justify-start lg:px-[clamp(3rem,6vw,7rem)] lg:pt-8">
-          {controls(
-            "absolute inset-x-5 top-[max(0.5rem,env(safe-area-inset-top))] flex items-center justify-between lg:hidden",
-          )}
+          {controls("absolute top-[max(0.5rem,env(safe-area-inset-top))] right-2 lg:hidden", "top-12 right-0")}
           <Logo className="relative" />
         </header>
 
