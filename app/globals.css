@@ -298,6 +298,14 @@ button {
 .js [data-reveal]:not([data-revealed]) {
   opacity: 0;
   transform: translateY(16px);
+  /* Failsafe: if scripts are slow or fail on a phone, content still appears after 2.5 s. */
+  animation: reveal-failsafe 600ms var(--ease-brand) 2.5s forwards;
+}
+@keyframes reveal-failsafe {
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 [data-reveal] {
   transition:
@@ -455,23 +463,5 @@ button {
   }
   .hero-unveil {
     display: none;
-  }
-}
-
-/* Flooring close-ups: a slow drift so the grain feels filmed, not static. */
-@keyframes floor-drift {
-  from {
-    transform: scale(1.02) translate3d(0, 0, 0);
-  }
-  to {
-    transform: scale(1.09) translate3d(-1.5%, -1%, 0);
-  }
-}
-.floor-drift {
-  animation: floor-drift 14s ease-in-out infinite alternate;
-}
-@media (prefers-reduced-motion: reduce) {
-  .floor-drift {
-    animation: none;
   }
 }

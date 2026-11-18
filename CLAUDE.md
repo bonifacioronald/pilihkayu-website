@@ -95,7 +95,8 @@
   uncropped as a full-height panel beside the content. Sound off with a toggle. Main buttons:
   Contact us and Download catalogue. Then, with clear space, "Which best describes you?" as one
   smooth dropdown (Architect or designer, Contractor, Project owner), not a row of buttons.
-  Then "Explore the website". The site menu has a "Welcome" link back to this screen.
+  Then "Explore the website". /welcome is only an entry point (Instagram, QR): the main menu
+  never links back to it; a small "Welcome screen" link sits in the footer only.
 - Small headings and questions are plain Inter. Fraunces caps are for real titles only, never
   for small text.
 - Prefer one interactive control over a stack of "Coming soon" buttons.
@@ -108,6 +109,16 @@
 - He likes the scattered (staggered, offset) image layout and a hero with a luxury entrance
   animation; avoid flat, static, centred-template sections.
 - Low-priority controls (video sound, pause) are collapsed into one small, quiet button.
+- Restraint with media: one video per section at most; the Home hero has no video (line drawing
+  plus title only, drawing kept clear of the text, low opacity). Prefer stills; play a clip on
+  hover (mouse) or when centred (touch), never a big always-on film.
+- Work in progress is shown small (staggered small photos), never as big images. A render may be
+  a product image if labelled quietly, but never the hero.
+- Products are compared side by side (all finishes visible at once), not hidden behind tabs, and
+  each product card links to its page (/flooring).
+- About (/factory) stays focused: heritage, facility, Prepare/Build/Finish, standards. Furniture
+  and wood species belong on Home (furniture under Projects).
+- Before reporting "done", check every image and video actually loads (no blank frames).
 - Anything not ready is shown greyed out, labelled "Coming soon", and cannot be tapped.
 - Video: Ronald edits the clips himself. Tell him the spec (orientation, length, no text) and
   use his file as delivered; do not cut clips out of the captioned reels. Compress for web only.

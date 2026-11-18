@@ -5,9 +5,7 @@ import { CertificationMarks } from "@/components/ui/certification-marks";
 import { ClosingCta } from "@/components/ui/closing-cta";
 import { Reveal } from "@/components/ui/reveal";
 import { Container, Grid, Section } from "@/components/ui/section";
-import { SpeciesSwatches } from "@/components/ui/species-swatches";
 import { TitleBlock } from "@/components/ui/title-block";
-import products from "@/content/products.json";
 import { VideoLoop } from "@/components/ui/video-loop";
 
 export const metadata: Metadata = {
@@ -127,60 +125,6 @@ export default function FactoryPage() {
             </li>
           ))}
         </ol>
-      </Section>
-
-      {/* Furniture */}
-      <Section tone="espresso" aria-labelledby="furniture-title">
-        <Container>
-          <TitleBlock id="furniture-title" title="Furniture, made piece by piece" align="right">
-            <p>
-              Chairs, tables and sets in merbau, teak and more: cut, shaped, joined and finished on our own floor, then
-              packed for export.
-            </p>
-          </TitleBlock>
-          <Grid className="mt-14 gap-y-10 lg:mt-20">
-            <Reveal className="col-span-2 md:col-span-3 lg:col-span-3">
-              <VideoLoop
-                src="/media/furniture-5.mp4"
-                poster="/media/furniture-5-poster.jpg"
-                alt="Shaped chair parts stacked in the workshop"
-                sizes="(min-width:1024px) 22vw, 48vw"
-              />
-              <p className="t-meta mt-3">Chair parts, shaped</p>
-            </Reveal>
-            <Reveal className="col-span-2 md:col-span-5 lg:col-span-5 lg:col-start-5 lg:mt-24" delay={100}>
-              <div className="relative aspect-[4/5] overflow-hidden">
-                <Image
-                  src="/photos/furniture/merbau-garden-tables.jpg"
-                  alt="Merbau garden tables in production, with a round table top behind"
-                  fill
-                  sizes="(min-width:1024px) 36vw, 48vw"
-                  className="object-cover"
-                />
-              </div>
-              <p className="t-meta mt-3">Merbau garden tables</p>
-            </Reveal>
-            <Reveal className="col-span-4 md:col-span-3 md:col-start-6 lg:col-span-3 lg:col-start-10 lg:-mt-6" delay={200}>
-              <VideoLoop
-                src="/media/furniture-6.mp4"
-                poster="/media/furniture-6-poster.jpg"
-                alt="Chair frame parts laid out before assembly"
-                sizes="(min-width:1024px) 22vw, 60vw"
-              />
-              <p className="t-meta mt-3">Frames, before assembly</p>
-            </Reveal>
-          </Grid>
-        </Container>
-      </Section>
-
-      {/* Species */}
-      <Section tone="espresso" texture="grain" aria-labelledby="species-title">
-        <Container>
-          <TitleBlock id="species-title" title="Wood species we work with">
-            <p>Common species for our flooring, ceilings and custom pieces. Others on request.</p>
-          </TitleBlock>
-          <SpeciesSwatches className="mt-14 lg:mt-20" species={products.species} />
-        </Container>
       </Section>
 
       {/* Certifications */}

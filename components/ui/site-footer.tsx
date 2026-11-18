@@ -28,6 +28,15 @@ export function SiteFooter() {
                 </li>
               ))}
             </ul>
+            <ul className="mt-2 flex flex-wrap gap-x-6">
+              {nav.secondary.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="t-meta inline-flex min-h-11 items-center [@media(hover:hover)]:hover:text-paper">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
         </div>
 

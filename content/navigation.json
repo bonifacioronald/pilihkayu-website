@@ -1,9 +1,13 @@
 {
-  "$comment": "Main menu and footer pages. Add a page here the day it ships; never list a page that does not exist.",
+  "$comment": "Main menu and footer pages. Add a page here the day it ships; never list a page that does not exist. 'secondary' links show only in the footer (small): /welcome is the Instagram/QR entry, not a place to send visitors back to.",
   "items": [
     {
       "label": "Home",
       "href": "/"
+    },
+    {
+      "label": "Flooring",
+      "href": "/flooring"
     },
     {
       "label": "About",
@@ -12,14 +16,16 @@
     {
       "label": "Catalogue",
       "href": "/catalogue"
-    },
-    {
-      "label": "Welcome",
-      "href": "/welcome"
     }
   ],
   "cta": {
     "label": "Contact us",
     "message": "Halo PilihKayu, saya ingin konsultasi proyek (dari website)"
-  }
+  },
+  "secondary": [
+    {
+      "label": "Welcome screen",
+      "href": "/welcome"
+    }
+  ]
 }
