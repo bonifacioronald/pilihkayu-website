@@ -11,7 +11,7 @@ built on its own branch with a preview, merged only after your phone QA.
 | 0 | Setup, content files, domain | Done (live) |
 | 1 | Design system + /styleguide | Done (merged 16 Nov) |
 | 2 | /welcome + analytics | Done (live 17 Nov) |
-| 3 | Home + /factory (About) | Built on phase-3-home-factory; merging it launches v1 |
+| 3 | Home + /factory (About) + /flooring + /catalogue | Done (v1 launched 18 Nov) |
 
 ## v1 launch: "the site is real"
 

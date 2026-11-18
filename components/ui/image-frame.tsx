@@ -111,7 +111,7 @@ export function VisualisationCaption({
   return (
     <p
       className={cx(
-        "absolute right-3 bottom-3 z-10 bg-espresso/70 px-2.5 py-1 text-[0.6875rem] font-medium tracking-[0.06em] text-paper/90",
+        "absolute right-3 bottom-3 z-10 bg-espresso/70 px-2.5 py-1 text-[0.75rem] font-medium tracking-[0.02em] text-paper/90",
         className,
       )}
     >

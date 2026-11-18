@@ -55,7 +55,7 @@ function ProjectTeaser({
       <p className="t-body t-muted mt-3 max-w-[42ch]">{text}</p>
       <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2">
         <p className="t-meta tabular">{meta}</p>
-        <p className="text-[0.6875rem] font-semibold tracking-[0.2em] text-[var(--muted)] uppercase">Case study · Coming soon</p>
+        <p className="text-[0.75rem] font-semibold tracking-[0.16em] text-[var(--muted)] uppercase">Case study · Coming soon</p>
       </div>
     </article>
   );

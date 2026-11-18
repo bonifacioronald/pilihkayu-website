@@ -21,7 +21,7 @@ export function HomeHero() {
         {/* Feathered on the text side (and softly at the foot), so drawing and words read as one scene. */}
         <div className="absolute inset-0 [mask-image:linear-gradient(to_bottom,#000_70%,transparent),linear-gradient(to_right,transparent,#000_45%)] [mask-composite:intersect] [-webkit-mask-composite:source-in] lg:[mask-image:linear-gradient(to_bottom,#000_78%,transparent),linear-gradient(to_right,transparent_2%,#000_42%)]">
           <div
-            className="hero-sketch absolute inset-0 bg-gold opacity-[0.28]"
+            className="hero-sketch absolute inset-0 bg-[linear-gradient(to_right,var(--color-paper)_15%,var(--color-gold)_75%)] opacity-[0.3]"
             style={{ "--art": "url(/drawings/interior-living.webp)" } as React.CSSProperties}
           />
         </div>

@@ -1,5 +1,5 @@
 {
-  "$comment": "Product data from the catalogue (p.6, p.12). Prices stay null until Ronald confirms the post-13-Nov start-from prices; the site then shows them. Never invent values.",
+  "$comment": "Product data from the catalogue (p.6, p.12). Prices: Ronald decided (18 Nov) to leave pricing off the site; keep priceFrom null. Never invent values.",
   "flooring": {
     "title": "The flooring series",
     "pattern": "Standard pattern: random brick. Herringbone and chevron on request.",
